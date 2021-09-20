@@ -7,3 +7,5 @@ Project 2, Group 4
 - Christie Thammavong
 
 Cool beans, cool cool beans
+
+Testing the repo is using Revature account
