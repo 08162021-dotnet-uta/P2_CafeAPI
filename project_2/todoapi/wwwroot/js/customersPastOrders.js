@@ -10,8 +10,8 @@ async function loadPre () {
 			console.log(data)
 			const lop = document.querySelector('.customerpastorderPerstore');
 			var totalprice = 0;
-			//Hacky solition of x=x+2 Explained in the Customer Repository  Task<List<ViewModelAll>> getPastOrdersviewallAsync  Documentation
-			for (let x = 0; x < data.length; x=x+2) {
+
+			for (let x = 0; x < data.length; x++) {
 				totalprice += data[x].productPrice;
 				console.log(data[x]);
 				lop.innerHTML += `

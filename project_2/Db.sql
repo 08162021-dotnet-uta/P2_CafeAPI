@@ -137,21 +137,30 @@ SELECT * FROM dbo.Products
 
 SELECT * FROM Customers
 DELETE FROM Customers
-WHERE CustomerId>5
+--WHERE CustomerId>5
 
 SELECT * FROM Stores
 
 SELECT * FROM StoresProduct
+--SELECT StoreId FROM StoresProduct Where StoreguidId = '4861525C-D270-45CA-BED3-DA8A97592D42'
 
 SELECT * FROM dbo.ItemizedOrders
 
-Select ProductName from Products
-Join StoresProduct
-on Products.ProductId = StoresProduct.ProductId
-WHERE StoreId=2
-Join ItemizedOrders
-on ItemizedOrders.ProductId = StoresProduct.ProductId
-WHERE StoresProduct.StoreId=2
+
+--UPDATE Products
+--SET ProductQuantity = 1
+--WHERE ProductId = 5
+
+--Delete from StoresProduct where StoreProductId>92
+
+
+--Select ProductName from Products
+--Join StoresProduct
+--on Products.ProductId = StoresProduct.ProductId
+--WHERE StoreId=2
+--Join ItemizedOrders
+--on ItemizedOrders.ProductId = StoresProduct.ProductId
+--WHERE StoresProduct.StoreId=2
 
 --WHERE ItemizedOrders.
 

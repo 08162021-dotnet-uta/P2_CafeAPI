@@ -222,11 +222,7 @@ namespace DemoStoreBusinessLayer
 
 			return vmc;
 		}
-		/// <summary>
-		/// Hacky Something is happening wiht the List. It produces a double of what ever is on the database in mcsa
-		/// </summary>
-		/// <param name="vmcC"></param>
-		/// <returns></returns>
+
 		public async Task<List<ViewModelAll>> getPastOrdersviewallAsync(ViewModelCustomer vmcC)
 		{
 			ViewModelAll hi = new ViewModelAll();
@@ -258,9 +254,9 @@ namespace DemoStoreBusinessLayer
 					 Customerid = e.CustomerId,
 					 StoreName = s.StoreName
 					 
-				 }).ToListAsync();
-				var hi2 =await mcsa;
-				foreach (var p in hi2)
+				 }).Distinct().ToListAsync();
+
+				foreach (var p in await mcsa)
 				{
 					//Console.WriteLine(p.ProductPrice);
 					hi = new ViewModelAll();
@@ -347,7 +343,7 @@ namespace DemoStoreBusinessLayer
 					 Customerid = e.CustomerId,
 					 StoreName = s.StoreName
 
-				 }).ToListAsync();
+				 }).Distinct().ToListAsync();
 
 				foreach (var p in await mcsa)
 				{
