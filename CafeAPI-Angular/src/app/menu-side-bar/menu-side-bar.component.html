@@ -1,0 +1,22 @@
+<div [ngStyle]="{'width':widthVal}" class="sidenav">
+
+  <button
+    style="font-size:30px;position:relative; left:190px;cursor:pointer;color:white;background-color: Transparent;background-repeat:no-repeat; border: none;cursor:pointer; overflow: hidden; "
+    (click)="offMenu()">&#9776;</button> |
+  <a href=" #">Home</a>
+  <a href="logincustomer()" routerLink="/login">Login</a>
+  <a href="registercustomer()" routerLink="/register">Register</a>
+  <br>
+
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider round"></span>
+  </label>
+
+
+
+</div>
+
+<button
+  style="font-size:30px;cursor:pointer;color:white;background-color: Transparent;background-repeat:no-repeat; border: none;cursor:pointer; overflow: hidden; "
+  (click)="onMenu()">&#9776;</button> |
