@@ -7,5 +7,5 @@ import { Observable,of } from 'rxjs';
 export class ProductService {
 
   constructor() { }
-  stockNotEmpty(): Observable<boolean>{return of(true)}
+  outOfStock(): Observable<boolean>{return of(true)}
 }
