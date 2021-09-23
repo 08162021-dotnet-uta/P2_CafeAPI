@@ -8,13 +8,15 @@ import { MenuSideBarComponent } from './menu-side-bar/menu-side-bar.component';
 import { LoginCustomerComponent } from './login-customer/login-customer.component';
 import { RegisterCustomerComponent } from './register-customer/register-customer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuSideBarComponent,
     LoginCustomerComponent,
-    RegisterCustomerComponent
+    RegisterCustomerComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
