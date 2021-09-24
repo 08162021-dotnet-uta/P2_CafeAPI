@@ -12,31 +12,36 @@
 <link rel="stylesheet" href="css/style.css"> -->
 
 
-
+<!-- ftco-section -->
 
 <section class="ftco-section">
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col-md-6 text-center mb-5">
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-6 col-lg-4">
-        <div class="login-wrap p-0">
+        <div class="login-wrap">
           <h3 class="mb-4 text-center">Login:</h3>
-          <form action="#" class="signin-form">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="First Name" name="fname" id="fname"
+
+          <form (submit)="logincustomer()">
+
+            <div class="form-group ">
+              <input type="text" class="form-control" name="fname" placeholder="First Name" id="fname"
                 [(ngModel)]="fname" required>
             </div>
+
             <div class="form-group">
               <input id="lname" type="text" class="form-control" placeholder="Last Name" name="lname"
                 [(ngModel)]="lname" required>
               <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
             </div>
+
             <div class="form-group">
               <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
             </div>
+
           </form>
 
         </div>

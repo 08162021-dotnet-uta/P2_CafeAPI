@@ -7,10 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuSideBarComponent implements OnInit {
   widthVal?: any;
-  constructor() {
-
-
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -20,6 +17,5 @@ export class MenuSideBarComponent implements OnInit {
   offMenu() {
     this.widthVal = '0px';
   }
-
 
 }
