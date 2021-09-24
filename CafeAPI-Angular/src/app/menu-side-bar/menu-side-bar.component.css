@@ -1,7 +1,29 @@
-body {
-  font-family: "Lato", sans-serif;
+/* Function to close side bar */
+.closesidenav{
+  font-size:30px;
+  position:relative; 
+  left:190px;
+  cursor:pointer;
+  color:white;
+  background-color: Transparent;
+  background-repeat:no-repeat; 
+  border: none;
+  cursor:pointer; 
+  overflow: hidden; 
 }
+/* Function to open side bar */
+.opensidenav{
+  font-size:30px;
+  cursor:pointer;
+  color:white;
+  background-color: Transparent;
+  background-repeat:no-repeat; 
+  border: none;
+  cursor:pointer; 
+  overflow: hidden; 
 
+}
+/* Side nav attribute key pair */
 .sidenav {
   height: 100%;
   width: 0;
@@ -21,25 +43,14 @@ body {
   font-size: 25px;
   color: #818181;
   display: block;
-  transition: 0.3s;
 }
 
 .sidenav a:hover {
   color: #f1f1f1;
 }
 
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
+/* Toggle location and attributes for Darkmode */
 .switch {
   position: relative;
   display: inline-block;
@@ -48,20 +59,7 @@ body {
   left:25px
 }
 
-#mySidenav  {
-  width:10px;
-}
-
-#mySidenav:hover {     
-
-  width:250px;   
-}
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
+/* Slider backdrop element in switch for Darkmode */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -73,7 +71,7 @@ body {
   -webkit-transition: .4s;
   transition: .4s;
 }
-
+/* Toggle Element */
 .slider:before {
   position: absolute;
   content: "";
@@ -90,10 +88,7 @@ input:checked + .slider {
   background-color: #2196F3;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
+/* allows for animation of toggle */
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
@@ -101,10 +96,11 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
+/* Backdrop rounded */
 .slider.round {
   border-radius: 34px;
 }
-
+/* toggle rounded */
 .slider.round:before {
   border-radius: 50%;
 }

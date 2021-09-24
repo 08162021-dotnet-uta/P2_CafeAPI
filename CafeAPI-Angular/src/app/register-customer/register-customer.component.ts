@@ -7,9 +7,8 @@ import { Customer } from '../customer';
   styleUrls: ['./register-customer.component.css']
 })
 export class RegisterCustomerComponent implements OnInit {
-  @Input() registertrue: boolean = false;
-  fname: string = 'First Name';
-  lname: string = 'Last Name';
+  fname: string = '';
+  lname: string = '';
   @Output() passNewCustomerToParent = new EventEmitter<Customer>();// emit this event when there is a customer to register
 
   constructor() { }
@@ -17,7 +16,6 @@ export class RegisterCustomerComponent implements OnInit {
   ngOnInit(): void {
     // this.registertrue = true;
   }
-
   registercustomer(): void {
     // in order to pass data up the component chain
     // you must emit an event from the child
