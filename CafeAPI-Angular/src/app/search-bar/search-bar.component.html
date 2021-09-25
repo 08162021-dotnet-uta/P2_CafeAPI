@@ -1,4 +1,7 @@
 <div class="search-bar">
   <label for="search-box">Search</label>
-  <input type="text" name="search-box" placeholder="Search for a product"/>
+  <input #searchBox type="text" name="search-box" placeholder="Search for a product" />
+  <!-- <input #searchBox type="text" name="search-box" placeholder="Search for a product" (input)="formatInput(searchBox.value)" /> -->
 </div>
+
+<app-product-listing [searchTerm]="formatInput(searchBox.value)"></app-product-listing>
