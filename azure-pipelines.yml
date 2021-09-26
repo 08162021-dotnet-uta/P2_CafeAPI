@@ -1,19 +1,116 @@
-# Starter pipeline
+ # Starter pipeline
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+pr: none
 trigger:
-- main
+  branches:
+   include:
+     - main
+  paths:
+    include:
+      - CafeAPI
+    exclude:
+      - Add_item_to_cart
+      - search_bar_and_product_listing
+      - Pipeline
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
+  
+variables:
+  pathtoproject: CafeAPI
+  pathtosolution: CafeAPI/CafeAPI.sln
+  buildConfiguration: 'Release'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+  - stage: Build
+    jobs:
+    - job: buildJob
+      steps:
+      #this step may be needed
+      # - task: DotNetCoreCLI@2
+      #   displayName: 'install .NET 5' 
+      #   inputs:
+      #     packageType: 'sdk'
+      #     version: '5.0.x'
+      - task: NuGetToolInstaller@1
+        
+      - task: NuGetCommand@2
+        inputs:
+        #may not be needed
+          command: 'restore'
+          restoreSolution: '$(pathtosolution)'
+  
+  - stage: SonarCloud
+    jobs:
+      - job: SonarCloud
+        steps:
+          # - task: SonarCloudPrepare@1
+          #   inputs:
+          #     SonarCloud: 'Sonarcloud-token-project1'
+          #     organization: 'gulomjonsaidov0961'
+          #     scannerMode: 'MSBuild'
+          #     projectKey: 'gulomjonsaidov0961_Proejct1'
+          #     projectName: 'Proejct1'
+          - task: SonarCloudPrepare@1
+            inputs:
+              SonarCloud: 'Cafe'
+              organization: 'gulomjonsaidov0961'
+              scannerMode: 'MSBuild'
+              projectKey: 'gulomjonsaidov0961_Cafe'
+              projectName: 'Cafe'
+              
+          - task: DotNetCoreCLI@2
+            displayName: Building
+            inputs:
+              command: 'build'
+              projects: '$(pathtosolution)'
+              workingDirectory: '$(pathtoproject)'
+              arguments: '--configuration $(buildConfiguration)'
+          
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'test'
+              projects: '$(pathtosolution)'
+              arguments: '--configuration $(buildConfiguration) --collect "Code Coverage"'
+              testRunTitle: 'CafeApi Tests'
+              workingDirectory: '$(pathtoproject)'
+          
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: 'Cobertura'
+              summaryFileLocation: '**/cobertura/coverage.xml'
+              
+          - task: SonarCloudAnalyze@1
+          - task: SonarCloudPublish@1
+            inputs:
+              pollingTimeoutSec: '300'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+          
+
+    # last stage
+  - stage: Publish
+    jobs:
+    - job: publish
+      steps:
+      - task: DotNetCoreCLI@2
+        displayName: Publishing
+        inputs:
+          command: 'publish'
+          publishWebProjects: true
+          projects: $(pathtosolution)
+          # creates an 'Artifact' and stores it in the DefaultWorkingDirectory on Azure
+          zipAfterPublish: true
+      - task: AzureRmWebAppDeployment@4
+        displayName: Deployment
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: 'Azure subscription 1(2c1de073-9f0b-4613-9eea-d9b009bdd0a8)'
+          appType: 'webApp'
+          WebAppName: 'p2cafeapi'
+          # deployToSlotOrASE: true
+          # ResourceGroupName: 'Project1'
+          # SlotName: 'production'
+          packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
