@@ -39,7 +39,11 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+              <button type="submit" [ngStyle]="{'visibility':isVisible}"
+                class="form-control btn btn-primary submit px-3">Sign
+                In</button>
+
+              <!-- onclick="window.location='/'" -->
             </div>
 
           </form>

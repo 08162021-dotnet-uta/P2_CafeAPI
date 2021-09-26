@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Customer } from '../customer';
+import { CustomerService } from '../customer.service';
+import { InMemoryDataService } from '../in-memory-data.service';
 
 @Component({
   selector: 'app-register-customer',
@@ -9,20 +11,35 @@ import { Customer } from '../customer';
 export class RegisterCustomerComponent implements OnInit {
   fname: string = '';
   lname: string = '';
-  @Output() passNewCustomerToParent = new EventEmitter<Customer>();// emit this event when there is a customer to register
 
-  constructor() { }
+  customerlist: Customer[] = [];
+  observablelist = this.customerservice.CustomerList();
+
+  constructor(private customerservice: CustomerService) { }
 
   ngOnInit(): void {
-    // this.registertrue = true;
+    this.observablelist
+      .subscribe(
+        x => {
+          this.customerlist = x
+        });
   }
+
   registercustomer(): void {
-    // in order to pass data up the component chain
-    // you must emit an event from the child
-    // that is caught by the parent and handled.
-    let c: Customer = { fname: this.fname, lname: this.lname };
-    console.log(`new customer is...${this.fname} ${this.lname}`)
-    this.passNewCustomerToParent.emit(c);
+    //sets login form input to sessionStorage
+    let sessionStorageObj = { customerId: this.customerlist[this.customerlist.length - 1].customerId + 1, fname: this.fname, lname: this.lname };
+    sessionStorage.setItem('user', JSON.stringify(sessionStorageObj));
+    //converts input into customer
+    let c: Customer = sessionStorageObj;
+    //adds customer to log
+    this.customerservice.addCustomer(c)
+      .subscribe(Customer => {
+        this.customerlist.push(Customer);
+      });
+    window.location.href = '/';
+
+
   }
+
 
 }
