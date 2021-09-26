@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
 import { Product } from 'src/app/Models/product';
 import { JsonPipe } from '@angular/common';
-//things to fake: product, sessionStorage(getitem,setitem), service call,
+
 
 @Component({
   selector: 'app-product',
@@ -10,8 +10,8 @@ import { JsonPipe } from '@angular/common';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  //product user clicked on
-  product :Product = {id:-1,name:""}
+  //product user clicked on has to be initialized
+  product :Product = {id:-1,name:"banana"}
   //whether or not the product is out of stock
   outOfStock?: boolean;
   //users cart, stored in sessionStorage
@@ -20,20 +20,24 @@ export class ProductComponent implements OnInit {
   cartString ?: string | null
 
   constructor(private productService: ProductService) {
-    this.cartString = sessionStorage.getItem("cart") 
     this.cart = []
   }
 
   ngOnInit(): void {
-    
   }
 
   setOutOfStockBool(id: number): void{this.productService.outOfStock().subscribe(bool => this.outOfStock = bool)}
+  
   addToCart(id: number) :void{
+    
+    this.cartString = sessionStorage.getItem("cart") 
+
+    if(this.cartString!=null) this.cart = JSON.parse(this.cartString);
+    //user automatically has an empty cart in sessionStorage, as opposed to no cart at all
+    else sessionStorage.setItem("cart",JSON.stringify(this.cart))
+    
     this.setOutOfStockBool(id);
-    //1st case: user has a cart and item not out of stock, rest are self explanatory
-    if(!this.outOfStock && this.cartString!=null) {this.cart = JSON.parse(this.cartString); this.cart.push(this.product); sessionStorage.setItem("cart",JSON.stringify(this.cart))}
-    else if(!this.outOfStock && this.cartString==null) {this.cart.push(this.product); sessionStorage.setItem("cart",JSON.stringify(this.cart))} 
+    if(!this.outOfStock) {this.cart.push(this.product); sessionStorage.setItem("cart",JSON.stringify(this.cart))}
   }
   
 }
