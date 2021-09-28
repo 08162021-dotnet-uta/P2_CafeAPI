@@ -21,3 +21,9 @@ steps:
     ng build --prod
   displayName: 'npm install and build'
   workingDirectory: 'CafeAPI-Angular'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'dist/CafeAPI-Angular'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+    
