@@ -2,7 +2,11 @@ export interface Product {
   // id: number;
   // name: string;
 
-  title: string;
-  price: string;
-  image: string;
+  id: string; // asin
+  title: string; // name of product
+  price: {
+    value: number; // price of product
+    currency: string; // USD
+  }
+  image: string; // image link
 }

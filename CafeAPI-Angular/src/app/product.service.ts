@@ -8,16 +8,22 @@ import { Product } from './product';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl: string = `https://api.rainforestapi.com/request?api_key=E7AAE532D7EE44DC8FAB999108FC05A5&type=search&amazon_domain=amazon.com&search_term=`;
+  private apiUrl: string = `https://api.rainforestapi.com/request?api_key=4EEDADFC0F7B4CD3B0996DEA09B90586&type=search&amazon_domain=amazon.com&search_term=`;
+  searchTerm!: string;
 
   constructor(private http: HttpClient) { }
 
   //boolean will be returned where literal is
   outOfStock(): Observable<boolean>{return of(false)}
 
+  formatSearchTerm(searchTerm: string): string {
+    this.searchTerm = searchTerm.replace(" ","+");
+    return this.searchTerm;
+  }
+
   // returns a list of products
   getProductListing(searchTerm: string): Observable<Product[]> {
-    // const url: string = `https://api.rainforestapi.com/request?api_key=E7AAE532D7EE44DC8FAB999108FC05A5&type=search&amazon_domain=amazon.com&search_term=memory+cards&page=1`;
+    // const url: string = `type=search&amazon_domain=amazon.com&search_term=memory+cards&page=1`;
     console.log(`${this.apiUrl}${searchTerm}&page=1`);
     console.log(this.http.get(`${this.apiUrl}${searchTerm}&page=1`));
     return this.http.get<Product[]>(`${this.apiUrl}${searchTerm}&page=1`)

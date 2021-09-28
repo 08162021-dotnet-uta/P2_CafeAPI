@@ -1,10 +1,13 @@
-<p>product-listing works!</p>
+<h1>Search Results for "{{ searchTerm }}"</h1>
 
 <ul>
-  <li *ngFor="let product of productlisting">
+  <li *ngFor="let product of productlisting$">
     <p>
-      {{ product.title }} {{ product.price }} {{ product.image }}
-      <!-- <img src="${product.image}" width="500" height="600"> -->
+      {{ product.title }}
+      <br>
+      Price: ${{ product.price.value }} {{ product.price.currency }}
+      <br>
+      <img [src]="product.image" width="auto" height="200">
     </p>
   </li>
 </ul>

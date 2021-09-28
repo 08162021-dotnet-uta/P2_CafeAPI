@@ -7,7 +7,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  // searchTerm: string = "memory+cards";
+  searchTerm!: string;
 
   constructor(private productService: ProductService) { }
 
@@ -21,7 +21,9 @@ export class SearchBarComponent implements OnInit {
   // }
 
   formatInput(searchTerm: string): string {
-    return searchTerm.replace(" ","+");
+    this.searchTerm = this.productService.formatSearchTerm(searchTerm);
+    console.log(this.searchTerm);
+    return this.searchTerm;
   }
 
 }

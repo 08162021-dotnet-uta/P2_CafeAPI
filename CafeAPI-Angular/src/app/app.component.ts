@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Customer } from './customer';
 import { ProductComponent } from './product/product.component';
 
@@ -9,4 +10,6 @@ import { ProductComponent } from './product/product.component';
 })
 export class AppComponent {
   title = 'appComponent'
+
+  constructor(public router: Router) { }
 }

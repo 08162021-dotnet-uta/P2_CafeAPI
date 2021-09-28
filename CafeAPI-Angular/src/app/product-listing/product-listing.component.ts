@@ -8,19 +8,22 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-listing.component.css']
 })
 export class ProductListingComponent implements OnInit {
-  @Input() searchTerm!: string;
-  productlisting: Product[] = [];
+  searchTerm!: string;
+  productlisting$: Product[] = [];
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    // this.productService.getProductListing(this.searchTerm)
-    //   .subscribe(productlisting => this.productlisting = productlisting);
+    this.searchTerm = this.productService.searchTerm;
+    if (this.searchTerm != undefined)
+    {
+      this.getProductListing(this.searchTerm);
+    }
   }
 
   getProductListing(searchTerm: string): void {
     this.productService.getProductListing(searchTerm)
-      .subscribe(productlisting => this.productlisting = productlisting);
+      .subscribe(productlisting => this.productlisting$ = productlisting);
   }
-  
+
 }

@@ -1,5 +1,5 @@
 <app-menu-side-bar></app-menu-side-bar>
-<app-search-bar></app-search-bar>
+<app-search-bar *ngIf="router.url != '/productlist'"></app-search-bar>
 
 <router-outlet></router-outlet>
 <app-product></app-product>
