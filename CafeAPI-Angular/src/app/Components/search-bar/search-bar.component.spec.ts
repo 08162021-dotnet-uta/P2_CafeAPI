@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchBarComponent } from './search-bar.component';
@@ -8,9 +9,9 @@ describe('SearchBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchBarComponent ]
-    })
-    .compileComponents();
+      imports: [HttpClientModule],
+      declarations: [SearchBarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +22,10 @@ describe('SearchBarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('formatInput(): should return the formatted search term', () => {
+    let searchTerm = component.formatInput('memory cards');
+    expect(searchTerm).toBe('memory+cards');
   });
 });
