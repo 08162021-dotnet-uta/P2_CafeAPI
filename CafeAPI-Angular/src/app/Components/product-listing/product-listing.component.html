@@ -1,0 +1,15 @@
+<a routerLink="..">Go back</a>
+
+<h1>Search Results for "{{ searchTerm.replace('+',' ') }}"</h1>
+
+<ul>
+  <li *ngFor="let product of productlisting$">
+    <p>
+      {{ product.title }}
+      <br>
+      Price: ${{ product.price.value.toFixed(2) }} {{ product.price.currency }}
+      <br>
+      <img [src]="product.image" width="auto" height="200">
+    </p>
+  </li>
+</ul>
