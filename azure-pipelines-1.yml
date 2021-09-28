@@ -23,7 +23,7 @@ steps:
   workingDirectory: 'CafeAPI-Angular'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: 'dist/CafeAPI-Angular'
+    PathtoPublish: 'CafeAPI-Angular/dist/CafeAPI-Angular'
     ArtifactName: 'drop'
     publishLocation: 'Container'
     
