@@ -26,5 +26,12 @@ steps:
     PathtoPublish: 'CafeAPI-Angular/dist/CafeAPI-Angular'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(1)(2c1de073-9f0b-4613-9eea-d9b009bdd0a8)'
+    appType: 'webApp'
+    WebAppName: 'CafeAPI-Angular'
+    packageForLinux: 'Container'
 
     
