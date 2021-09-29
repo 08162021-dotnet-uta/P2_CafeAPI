@@ -3,18 +3,17 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-pr: none
-trigger:
+trigger: 
   branches:
-   include:
-     - main
+    include:
+      - main
   paths:
     include:
       - CafeAPI
-    exclude:
-      - Add_item_to_cart
-      - search_bar_and_product_listing
-      - Pipeline
+pr:
+  paths:
+    include:
+      - CafeAPI
 
 pool:
   vmImage: windows-latest
