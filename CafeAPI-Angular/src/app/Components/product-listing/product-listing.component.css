@@ -24,3 +24,7 @@ li {
 img {
   display: inline-block;
 }
+
+.link-to-product{
+  background-color: white;
+}

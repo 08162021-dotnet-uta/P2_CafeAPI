@@ -16,8 +16,7 @@ export class ProductListingComponent implements OnInit {
   ngOnInit(): void {
     // retrieves stored and formatted search term from product service to be used here
     this.searchTerm = this.productService.searchTerm;
-    if (this.searchTerm != undefined)
-    {
+    if (this.searchTerm != undefined) {
       this.getProductListing(this.searchTerm);
     }
   }
@@ -25,7 +24,12 @@ export class ProductListingComponent implements OnInit {
   // method to call and retrieve product list from product service
   getProductListing(searchTerm: string): void {
     this.productService.getProductListing(searchTerm)
-      .subscribe(productlisting => this.productlisting$ = productlisting);
+      .subscribe(productlisting => {
+        this.productlisting$ = productlisting,
+          // console.log(this.productlisting$),
+          // sessionStorage.clear(),
+          sessionStorage.setItem('results', JSON.stringify(productlisting)) // store the data into session storage
+      });
   }
 
 }
