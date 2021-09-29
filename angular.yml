@@ -1,0 +1,83 @@
+# Node.js with Angular
+
+trigger: 
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - CafeAPI-Angular
+pr:
+  paths:
+    include:
+      - CafeAPI-Angular
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.17.6'
+  displayName: 'Install Node.js'
+
+# - task: SonarCloudPrepare@1
+#   inputs:
+#     SonarCloud: 'Cafe'
+#     organization: 'gulomjonsaidov0961'
+#     scannerMode: 'CLI'
+#     configMode: 'manual'
+#     cliProjectKey: 'gulomjonsaidov0961_Cafe'
+#     cliProjectName: 'Angular'
+#     cliSources: 'CafeAPI-Angular'
+
+- script: |
+    npm install -g @angular/cli
+    npm install
+    ng build --prod
+  displayName: 'npm install and build'
+  workingDirectory: 'CafeAPI-Angular'
+
+- script: npm install puppeteer --save-dev
+
+- script: |
+    cd CafeAPI-Angular
+    npm install karma-junit-reporter --save-dev
+    npx ng test --karmaConfig karma.conf.ci.js --watch=false --code-coverage
+    ls -R $(System.DefaultWorkingDirectory)
+  displayName: 'Tests'
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TESTS-*.xml'
+  displayName: 'Publish test results'  
+  
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: 'CafeAPI-Angular/coverage/CafeAPI-Angular/coberYeah.xml'
+
+# - task: SonarCloudAnalyze@1
+# - task: SonarCloudPublish@1
+#   inputs:
+#           pollingTimeoutSec: '300'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: 'CafeAPI-Angular/dist/CafeAPI-Angular'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(4)(2c1de073-9f0b-4613-9eea-d9b009bdd0a8)'
+    appType: 'webApp'
+    WebAppName: 'CafeAPI-Angular'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+
+    

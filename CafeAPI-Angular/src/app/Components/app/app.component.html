@@ -1,0 +1,5 @@
+<app-menu-side-bar></app-menu-side-bar>
+<app-search-bar *ngIf="!(router.url === '/login' || router.url === '/register')"></app-search-bar>
+<router-outlet></router-outlet>
+
+<!-- *ngIf=" router.url !='/productlist'"  -->

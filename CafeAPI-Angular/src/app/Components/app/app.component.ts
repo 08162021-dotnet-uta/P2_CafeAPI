@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Customer } from './customer';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,7 @@ import { Customer } from './customer';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'appComponent'
+  title = 'CafeAPI-Angular';
+
+  constructor(public router: Router) { }
 }

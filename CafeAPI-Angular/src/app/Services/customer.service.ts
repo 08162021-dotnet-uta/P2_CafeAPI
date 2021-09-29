@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Customer } from './customer';
+import { Customer } from '../Models/customer';
 
 import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
@@ -11,7 +11,7 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
   private url2 = 'api/customers'
-  private url1 = 'https://localhost:5001/Customer/Customerlist'
+  private url1 = 'https://localhost:5001'
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -22,12 +22,12 @@ export class CustomerService {
   // create functions to make http requests and other various and sundry actions.
   CustomerList(): Observable<Customer[]> {
     // return this.http.get<Customer[]>(`${this.url}Customerlist`);
-    return this.http.get<Customer[]>(this.url1);
+    return this.http.get<Customer[]>(`${this.url1}/Customer/Customerlist`);
   }
 
   addCustomer(Customer: Customer): Observable<Customer> {
-    return this.http.post<Customer>(this.url1, Customer, this.httpOptions).pipe(
-      tap((newcustomer: Customer) => console.log(`added customer w/ id=${newcustomer.id}`)),
+    return this.http.post<Customer>(`${this.url1}/Customer/register`, Customer, this.httpOptions).pipe(
+      tap((newcustomer: Customer) => console.log(`added customer w / id=${newcustomer.id}`)),
       catchError(this.handleError<Customer>('addCustomer'))
     );
   }
