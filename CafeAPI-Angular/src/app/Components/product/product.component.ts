@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  setOutOfStockBool(id: string): void{this.productService.outOfStock().subscribe(bool => this.outOfStock = bool)}
+  setOutOfStockBool(id: string): void{this.productService.outOfStock(id).subscribe(bool => this.outOfStock = bool)}
 
   addToCart(id: string) :void{
 
