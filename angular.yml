@@ -42,6 +42,7 @@ steps:
 
 - script: |
     cd CafeAPI-Angular
+    npm install karma-junit-reporter --save-dev
     npx ng test --karmaConfig karma.conf.ci.js --watch=false --code-coverage
     ls -R $(System.DefaultWorkingDirectory)
   displayName: 'Tests'
