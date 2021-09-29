@@ -26,19 +26,19 @@ namespace BusinessLayer.Controllers
 
 		// GET: CustomerController/Details/5
 		[HttpGet("Customerlist")]
-		public async Task<List<ViewModelCustomer>> Details()
+		public async Task<ActionResult<List<ViewModelCustomer>>> Details()
 		{
-			//if (!ModelState.IsValid) return BadRequest();
-			// call the business layer method to return list of customers
-			Task<List<ViewModelCustomer>> customers = _customerrepo.CustomerListAsync();
-			//do stuff
-			//if (customers == null)
-			//{
-			//	return NotFound();
-			//}
-			//_logger.LogInformation("\n\nThere was a problem in the Customerlist method.\n\n");
-			//do more stuff
-			List<ViewModelCustomer> customers1 = await customers;
+            if (!ModelState.IsValid) return BadRequest();
+            // call the business layer method to return list of customers
+            Task<List<ViewModelCustomer>> customers = _customerrepo.CustomerListAsync();
+            //do stuff
+            if (customers == null)
+            {
+                return NotFound();
+            }
+            //_logger.LogInformation("\n\nThere was a problem in the Customerlist method.\n\n");
+            //do more stuff
+            List<ViewModelCustomer> customers1 = await customers;
 
 			return customers1;
 		}

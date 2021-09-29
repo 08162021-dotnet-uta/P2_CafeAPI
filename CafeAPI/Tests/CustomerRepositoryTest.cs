@@ -1,84 +1,104 @@
 using Microsoft.EntityFrameworkCore;
-using Project1.StoreApplication.Domain.Models;
-using Project1.StoreApplication.Storage;
+using StorageLayer.Interfaces;
+using StorageLayer;
 using System;
 using System.Collections.Generic;
+using ModelsLayer.EfModels;
+using ModelsLayer;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using DatabaseLayer;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
-namespace Project1.StoreApplication.Tests
+
+
+namespace Tests
 {
+    
     public class CustomerRepositoryTests
     {
-        //public DbContextOptions<Kyles_Pizza_ShopContext> options { get; set; } = new DbContextOptionsBuilder<Kyles_Pizza_ShopContext>()
-        //    .UseInMemoryDatabase(databaseName: "TestDb")
-        //    .Options;
-        Kyles_Pizza_ShopContext _context = new Kyles_Pizza_ShopContext();
+       
+        testprojectContext _context = new testprojectContext();
 
         [Fact]
-        public void FindCustomerTest()
+        public async Task FindCustomerTest()
         {
-            //using (Kyles_Pizza_ShopContext _context = new Kyles_Pizza_ShopContext(options))
-            //{
-            //_context.Database.ExecuteSqlRaw("delete from Customers");
-            //_context.SaveChanges();
-            _context.Database.EnsureDeleted();// delete any Db from a previous test
-            _context.Database.EnsureCreated();// create a new Db... you will need to seed it again.
-            string firstName = "Jason";
-            string lastName = "Ellis";
-            _context.Customers.Add(new Customer() { FirstName = firstName, LastName = lastName });
+
+            int lengthOriginal, lengthNew;
+            CustomerRepository _customerrepo = new CustomerRepository(_context);
+            Task<List<ViewModelCustomer>> customers = _customerrepo.CustomerListAsync();
+            customers.Wait();
+            List<ViewModelCustomer> customers1 = await customers;
+                        lengthOriginal = customers1.Count+1;
+            Customer c1 = new Customer() { FirstName = "Ben", LastName = "Test" };
+            _context.Customers.Add(c1);
             _context.SaveChanges();
 
-            CustomerRepository customerRepository = new CustomerRepository(_context);
-            List<Customer> customer = customerRepository.FindCustomer(firstName, lastName);
-            Assert.Equal(firstName, customer[0].FirstName);
-            Assert.Equal(lastName, customer[0].LastName);
-            // }
+            CustomerRepository _customerrepo2 = new CustomerRepository(_context);
+            Task<List<ViewModelCustomer>> customers2 = _customerrepo.CustomerListAsync();
+            customers2.Wait();
+            List<ViewModelCustomer> customers21 = await customers2;
+            lengthNew = customers21.Count;
+            Assert.Equal(lengthOriginal,lengthNew);
+            Assert.True(customers21[lengthNew-1].FirstName== "Ben");
+
         }
 
         [Fact]
-        public void AddCustomerTest()
+        public void loginCustomerTest()
         {
-            //using (Kyles_Pizza_ShopContext _context = new Kyles_Pizza_ShopContext(options))
-            //{
-            //_context.Database.ExecuteSqlRaw("delete from Customers");
-            //_context.SaveChanges();
-            _context.Database.EnsureDeleted();
-            _context.Database.EnsureCreated();
-            Customer customer = new Customer() { FirstName = "Jason", LastName = "Ellis" };
-            CustomerRepository customerRepository = new CustomerRepository(_context);
-            int actualId = customerRepository.AddCustomer(customer);
+            CustomerRepository _customerrepo = new CustomerRepository(_context);
+            Customer c1 = new Customer() { FirstName = "Benlogin", LastName = "Test" };
+            
 
-            //Customer customer1 = _context.Customers.FromSqlRaw($"select * from Customers where FirstName = '{customer.FirstName}' and LastName = '{customer.LastName}'").First();
-            Customer customer1 = _context.Customers.Where(c => c.FirstName.Equals("Jason") && c.LastName.Equals("Ellis")).FirstOrDefault();
-            int expectedId = customer1.Id;
-            Assert.Equal(expectedId, actualId);
-            // }
-        }
+            ViewModelCustomer c11 = ModelMapper.CustomerToViewModelCustomer(c1);
+            Task<ViewModelCustomer> customers = _customerrepo.LoginCustomerAsync(c11);
+            customers.Wait();
+            _context.SaveChanges();
+            //ViewModelCustomer c2 = new ViewModelCustomer { FirstName = "newBen", LastName = "Fr7anklin" };
+
+            //Task<ViewModelCustomer> customers2 = _customerrepo.LoginCustomerAsync(c2);
+            //customers.Wait();
+            Assert.NotNull(customers);
+            //Assert.Null(customers2);
+         }
 
         [Fact]
-        public void GetAllTest()
+        public async Task registerCustomerTest()
         {
             //using (Kyles_Pizza_ShopContext _context = new Kyles_Pizza_ShopContext(options))
             //{
-            _context.Database.EnsureDeleted();
-            _context.Database.EnsureCreated();
-            //_context.Database.ExecuteSqlRaw("delete from Customers");
-            //_context.SaveChanges();
-            _context.Customers.Add(new Customer() { FirstName = "James", LastName = "Bond" });
-            _context.Customers.Add(new Customer() { FirstName = "Aretha", LastName = "Franklin" });
-            _context.Customers.Add(new Customer() { FirstName = "Rory", LastName = "McIlroy" });
+
+            //RegisterCustomerAsync
+            int lengthOriginal, lengthNew;
+            CustomerRepository _customerrepo = new CustomerRepository(_context);
+            Task<List<ViewModelCustomer>> customers = _customerrepo.CustomerListAsync();
+            customers.Wait();
+            List<ViewModelCustomer> customers1 = await customers;
+            lengthOriginal = customers1.Count ;
+
+            Customer c1 = new Customer() { FirstName = "Benregister", LastName = "Test" };
+            ViewModelCustomer c11 = ModelMapper.CustomerToViewModelCustomer(c1);
+            Task<ViewModelCustomer> customers2 = _customerrepo.RegisterCustomerAsync(c11);
+            customers2.Wait();
             _context.SaveChanges();
 
-            CustomerRepository customerRepository = new CustomerRepository(_context);
-            List<Customer> customers = customerRepository.GetAll();
-            //Assert.True(customers[0].FirstName.Equals("James"));
-            //Assert.True(customers[1].LastName.Equals("Franklin"));
-            //Assert.True(customers[2].FirstName.Equals("Rory"));
-            Assert.Equal(3, customers.Count);
-            //}
+
+            Task<List<ViewModelCustomer>> customers3 = _customerrepo.CustomerListAsync();
+            customers.Wait();
+            List<ViewModelCustomer> customers33 = await customers3;
+            lengthNew = customers33.Count;
+
+
+            _context.SaveChanges();
+            customers.Wait();
+            Assert.Equal(lengthOriginal+1, lengthNew);
+
+        }
+ 
+          
         }
     }
-}
