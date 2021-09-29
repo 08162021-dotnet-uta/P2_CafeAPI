@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/Models/product';
 
 @Component({
   selector: 'app-view-cart',
@@ -6,10 +7,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-cart.component.css']
 })
 export class ViewCartComponent implements OnInit {
+    //users cart, stored in sessionStorage
+    cart : Product[] = [];
+    //used to parse cart
+    cartString ?: string | null
+    cartEmpty: string = "Empty cart";
+    isEmpty: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.getCart();
+  }
+
+  printEmpty(): string {
+    return this.cartEmpty;
+  }
+
+  getCart(): void {
+    this.cartString = sessionStorage.getItem('cart');
+    if (this.cartString == null) {
+      this.printEmpty();
+    }
+    else {
+      this.isEmpty = !this.isEmpty;
+      this.cart = JSON.parse(this.cartString);
+    }
   }
 
 }
