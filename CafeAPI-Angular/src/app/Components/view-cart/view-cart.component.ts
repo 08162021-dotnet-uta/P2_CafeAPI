@@ -20,10 +20,12 @@ export class ViewCartComponent implements OnInit {
     this.getCart();
   }
 
+  // prints to the user their cart is empty
   printEmpty(): string {
     return this.cartEmpty;
   }
 
+  // get the customer's cart stored in sessionStorage
   getCart(): void {
     this.cartString = sessionStorage.getItem('cart');
     if (this.cartString == null) {
