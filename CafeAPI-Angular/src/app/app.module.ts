@@ -7,13 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProductComponent } from './Components/product/product.component';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 import { ProductListingComponent } from './Components/product-listing/product-listing.component';
+import { ViewCartComponent } from './Components/view-cart/view-cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     SearchBarComponent,
-    ProductListingComponent
+    ProductListingComponent,
+    ViewCartComponent
   ],
   imports: [
     BrowserModule,
