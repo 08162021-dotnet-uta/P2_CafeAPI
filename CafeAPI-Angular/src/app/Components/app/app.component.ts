@@ -8,6 +8,11 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'CafeAPI-Angular';
+  isShown: boolean = false;
 
   constructor(public router: Router) { }
+
+  toggleShow() {
+    this.isShown = !this.isShown;
+  }
 }
