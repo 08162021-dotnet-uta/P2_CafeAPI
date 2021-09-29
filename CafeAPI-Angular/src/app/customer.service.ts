@@ -10,8 +10,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class CustomerService {
 
   constructor(private http: HttpClient) { }
-  private url1 = 'api/customers'
-  private url2 = 'https://localhost:4200/Customer/'
+  private url2 = 'api/customers'
+  private url1 = 'https://localhost:5001/Customer/Customerlist'
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -27,7 +27,7 @@ export class CustomerService {
 
   addCustomer(Customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.url1, Customer, this.httpOptions).pipe(
-      tap((newcustomer: Customer) => console.log(`added customer w/ id=${newcustomer.customerId}`)),
+      tap((newcustomer: Customer) => console.log(`added customer w/ id=${newcustomer.id}`)),
       catchError(this.handleError<Customer>('addCustomer'))
     );
   }

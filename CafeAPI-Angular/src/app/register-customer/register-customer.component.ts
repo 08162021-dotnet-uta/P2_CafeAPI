@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Customer } from '../customer';
 import { CustomerService } from '../customer.service';
-import { InMemoryDataService } from '../in-memory-data.service';
+// import { InMemoryDataService } from '../in-memory-data.service';
 
 @Component({
   selector: 'app-register-customer',
@@ -27,7 +27,7 @@ export class RegisterCustomerComponent implements OnInit {
 
   registercustomer(): void {
     //sets login form input to sessionStorage
-    let sessionStorageObj = { customerId: this.customerlist[this.customerlist.length - 1].customerId + 1, fname: this.fname, lname: this.lname };
+    let sessionStorageObj = { id: this.customerlist[this.customerlist.length - 1].id + 1, firstName: this.fname, lastName: this.lname };
     sessionStorage.setItem('user', JSON.stringify(sessionStorageObj));
     //converts input into customer
     let c: Customer = sessionStorageObj;

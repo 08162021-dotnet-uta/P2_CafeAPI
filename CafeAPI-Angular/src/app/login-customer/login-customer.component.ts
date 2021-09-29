@@ -26,9 +26,10 @@ export class LoginCustomerComponent implements OnInit {
         });
   }
 
+
   logincustomer(): void {
     //find customer
-    this.selectedCustomer = this.customerlist.find(x => x.fname === this.fname && x.lname === this.lname);
+    this.selectedCustomer = this.customerlist.find(x => x.firstName === this.fname && x.lastName === this.lname);
     //if customer is found
     if (this.selectedCustomer == null) {
       //Make the submit dissapear and reappear
@@ -45,6 +46,8 @@ export class LoginCustomerComponent implements OnInit {
       window.location.href = '/';
     }
   }
+
+
 
 
 }
