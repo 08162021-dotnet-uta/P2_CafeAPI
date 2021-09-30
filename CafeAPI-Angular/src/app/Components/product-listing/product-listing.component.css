@@ -5,7 +5,7 @@ a {
   font-weight: bold;
   font-size: 20px;
   display: inline;
-  background-color: lightgray;
+  /* background-color: lightgray; */
   height: 34px;
   width: 120px;
   padding: 10px;
@@ -14,13 +14,13 @@ a {
 
 h1 {
   text-align: center;
-  color: white;
+  color: black;
 }
 
 li {
   list-style-type: none;
   padding-bottom: 5px;
-  color: white;
+  color: black;
 }
 
 img {
