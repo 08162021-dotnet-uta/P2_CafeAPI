@@ -11,7 +11,6 @@ import { MenuSideBarComponent } from '../menu-side-bar/menu-side-bar.component';
 export class ProductListingComponent implements OnInit {
   searchTerm!: string;
   productlisting$: Product[] = [];
-  productlisting$2: Product[] = [];
 
   constructor(private productService: ProductService) { }
 
