@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable,of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Product } from '../Models/product';
 
@@ -22,7 +22,7 @@ export class ProductService {
 
   // correctly format the search term to work in API request: 'memory+cards' instead of 'memory cards'
   formatSearchTerm(searchTerm: string): string {
-    this.searchTerm = searchTerm.replace(" ","+");
+    this.searchTerm = searchTerm.replace(" ", "+");
     return this.searchTerm;
   }
 
@@ -32,9 +32,17 @@ export class ProductService {
     // console.log(`${this.apiUrl}${searchTerm}&page=1`);
     // console.log(this.http.get(`${this.apiUrl}${searchTerm}&page=1`));
     return this.http.get<Product[]>(`${this.apiUrl}${searchTerm}&page=1`)
-      .pipe(map((data: any) => data.search_results),
+      .pipe(map((data: any) => data.search_results.filter((item: Product) => item.price !== undefined)),
         catchError(this.handleError<Product[]>('getProductListing', []))
       );
+  }
+
+  // returns a single product when the use click on a product 
+  getProduct(id: string): Product {
+    const results = JSON.parse(sessionStorage.getItem('results')!);
+    const item: Product = results.find((x: { asin: string; }) => x.asin === id);
+    console.log(item);
+    return item;
   }
 
   /**

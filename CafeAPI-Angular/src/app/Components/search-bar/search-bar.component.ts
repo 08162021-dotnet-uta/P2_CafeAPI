@@ -21,4 +21,5 @@ export class SearchBarComponent implements OnInit {
     return this.searchTerm;
   }
 
+
 }

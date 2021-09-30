@@ -11,6 +11,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using StorageLayer.Interfaces;
+using StorageLayer;
+using ModelsLayer.EfModels;
+using BusinessLayer.Controllers;
+using DatabaseLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLayer
 {
@@ -26,12 +32,50 @@ namespace BusinessLayer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
+            services.AddCors((options) =>
+            {
+                options.AddPolicy(name: "dev", builder =>
+                {
+                    builder.WithOrigins(
+                    "http://localhost:4200",
+                    "http://127.0.0.1:5500",
+                    "http://127.0.0.1:8080",
+                    "http://127.0.0.1:8081",
+                    "http://localhost:8081",
+                    "https://localhost:5001",
+                    "http://localhost:5000",
+                    "http://localhost:5001"
+                    )
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BusinessLayer", Version = "v1" });
             });
+            services.AddDbContext<testprojectContext>(options =>
+            {
+                //if (options.IsConfigured)
+                //{
+                //    options.UseSqlServer(Configuration.GetConnectionString("DevDb"));
+                //}
+                //if db options is already configured, done do anything..
+                // otherwise use the Connection string I have in secrets.json
+
+                //if (!options.IsConfigured)
+                //{
+                //    options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
+                //}
+            });
+
+            //registering classes with the DI system.
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IModelMapper, ModelMapper>();
+           // services.AddMvc(c => c.Conventions.Add(new ApiExplorerIgnores()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,9 +88,13 @@ namespace BusinessLayer
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BusinessLayer v1"));
             }
 
+            app.UseDeveloperExceptionPage();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("dev");
 
             app.UseAuthorization();
 
