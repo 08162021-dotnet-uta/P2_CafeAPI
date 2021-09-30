@@ -27,7 +27,7 @@ namespace StorageLayer.Repositories
 
         public void reduceStock(string id) 
         {
-            _context.Database.ExecuteSqlRaw($"update Product set Inventory = Inventory - 1 where Id = {id}");
+            _context.Database.ExecuteSqlRaw($"update Product set Inventory = Inventory - 1 where Id = '{id}'");
             _context.SaveChanges();
         }
     }

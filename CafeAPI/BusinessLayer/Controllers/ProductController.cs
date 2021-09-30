@@ -17,9 +17,6 @@ namespace BusinessLayer.Controllers
         public ProductController(IProductRepository productRepository) 
             { _productRepository = productRepository; }
         
-
-
-
         [HttpGet("outOfStock/{id}")]
         public async Task<ActionResult<Boolean>> Get(string id)
         {
