@@ -11,7 +11,6 @@ import { MenuSideBarComponent } from '../menu-side-bar/menu-side-bar.component';
 export class ProductListingComponent implements OnInit {
   searchTerm!: string;
   productlisting$: Product[] = [];
-  productlisting$2: Product[] = [];
 
   constructor(private productService: ProductService) { }
 
@@ -27,12 +26,5 @@ export class ProductListingComponent implements OnInit {
   getProductListing(searchTerm: string): void {
     this.productService.getProductListing(searchTerm)
       .subscribe(productlisting => this.productlisting$ = productlisting);
-
-    // for (let item of this.productlisting$) {
-    //   if (item.id == null || item.title == null || item.price == null || item.image == null || item.id == undefined || item.title == undefined || item.price == undefined || item.image == undefined) {
-    //     this.productlisting$2.push(item);
-    //   }
-    // }
-    // this.productlisting$ = this.productlisting$2;
   }
 }

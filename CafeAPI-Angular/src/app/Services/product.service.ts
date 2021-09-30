@@ -29,7 +29,7 @@ export class ProductService {
     // console.log(`${this.apiUrl}${searchTerm}&page=1`);
     // console.log(this.http.get(`${this.apiUrl}${searchTerm}&page=1`));
     return this.http.get<Product[]>(`${this.apiUrl}${searchTerm}&page=1`)
-      .pipe(map((data: any) => data.search_results),
+      .pipe(map((data: any) => data.search_results.filter((item: Product) => item.price !== undefined)),
         catchError(this.handleError<Product[]>('getProductListing', []))
       );
   }
