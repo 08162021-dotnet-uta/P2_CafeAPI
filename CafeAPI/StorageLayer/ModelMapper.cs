@@ -39,6 +39,94 @@ namespace StorageLayer
 			return c1;
 		}
 
-		
+		/// <summary>
+		/// This method takes an Order and returns the mapping to a ViewModelOrder
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns></returns>
+		public static ViewModelOrder OrderToViewModelOrder(Order o)
+		{
+			ViewModelOrder o1 = new ViewModelOrder();
+			o1.Id = o.Id;
+			o1.CustomerId = o.CustomerId;
+			o1.NumberOfItems = o.NumberOfItems;
+			o1.TotalPrice = o.TotalPrice;
+			return o1;
+		}
+
+		/// <summary>
+		/// This method takes a ViewModelOrder and returns the mapping to an Order
+		/// </summary>
+		/// <param name="o"></param>
+		/// <returns></returns>
+		public static Order ViewModelOrderToOrder(ViewModelOrder o) 
+		{
+			Order o1 = new Order();
+			o1.Id = o.Id;
+			o1.CustomerId = o.CustomerId;
+			o1.NumberOfItems = o.NumberOfItems;
+			o1.TotalPrice = o.TotalPrice;
+			return o1;
+		}
+
+		/// <summary>
+		/// This method takes an OrderItem and returns the mapping to a ViewModelOrderItem
+		/// </summary>
+		/// <param name="oi"></param>
+		/// <returns></returns>
+		public static ViewModelOrderItem OrderItemToViewModelOrderItem(OrderItem oi) 
+		{
+			ViewModelOrderItem oi1 = new ViewModelOrderItem();
+			oi1.OrderId = oi1.OrderId;
+			oi1.ProductId = oi1.ProductId;
+			return oi1;
+		}
+
+		/// <summary>
+		/// This method takes a ViewModelOrderItem and returns the mapping to an OrderItem
+		/// </summary>
+		/// <param name="oi"></param>
+		/// <returns></returns>
+		public static OrderItem ViewModelOrderItemToOrderItem(ViewModelOrderItem oi)
+        {
+			OrderItem oi1 = new OrderItem();
+			oi1.OrderId = oi1.OrderId;
+			oi1.ProductId = oi1.ProductId;
+			return oi1;
+		}
+
+		/// <summary>
+		/// This method takes a Product and returns the mapping to a ViewModelProduct
+		/// </summary>
+		/// <param name="p"></param>
+		/// <returns></returns>
+		public static ViewModelProduct ProductToViewModelProduct(Product p)
+        {
+			ViewModelProduct p1 = new ViewModelProduct();
+			p1.Id = p.Id;
+			p1.ProductId = p.ProductId;
+			p1.Name = p.Name;
+			p1.Description = p.Description;
+			p1.Price = p.Price;
+			p1.Inventory = p.Inventory;
+			return p1;
+		}
+
+		/// <summary>
+		/// This method takes a ViewModelProduct and returns the mapping to a Product
+		/// </summary>
+		/// <param name="p"></param>
+		/// <returns></returns>
+		public static Product ViewModelProductToProduct(ViewModelProduct p)
+        {
+			Product p1 = new Product();
+			p1.Id = p.Id;
+			p1.ProductId = p.ProductId;
+			p1.Name = p.Name;
+			p1.Description = p.Description;
+			p1.Price = p.Price;
+			p1.Inventory = p.Inventory;
+			return p1;
+		}
 	}
 }
