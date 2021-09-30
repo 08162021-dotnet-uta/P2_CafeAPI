@@ -11,5 +11,6 @@ namespace StorageLayer.Interfaces
     {
         Task<ViewModelProduct> AddProductAsync(ViewModelProduct vmp);
         //Task<ViewModelProduct> ProductListAsync(ViewModelProduct vmp);
+        List<ViewModelProduct> Products() { throw new NotImplementedException(); }
     }
 }

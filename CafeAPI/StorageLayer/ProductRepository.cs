@@ -21,13 +21,24 @@ namespace StorageLayer
             _context = context;
         }
 
+
+        public List<ViewModelProduct> Products()
+        {
+            List<Product> products = _context.Products.FromSqlRaw<Product>("select * from Product").ToList();
+
+            List<ViewModelProduct> vmp = new List<ViewModelProduct>();
+            foreach (Product p in products)
         /// <summary>
         /// This method will add a product to the product table in the DB
         /// </summary>
         /// <param name="vmp"></param>
         /// <returns></returns>
         public async Task<ViewModelProduct> AddProductAsync(ViewModelProduct vmp)
-        {
+            {
+                vmp.Add(ModelMapper.ProductToViewModelProduct(p));
+            }
+
+            return vmp;
             Product p1 = ModelMapper.ViewModelProductToProduct(vmp);
             int p2 = await _context.Database.ExecuteSqlRawAsync("INSERT INTO Product (ProductId, Name, Price) VALUES ({0},{1},{2})", p1.ProductId, p1.Name, p1.Price);
         }
