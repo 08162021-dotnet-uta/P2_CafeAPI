@@ -1,0 +1,696 @@
+{
+  "DatabaseLayer.dll": {
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\DatabaseLayer\\Class1.cs": {
+      "DatabaseLayer.Class1": {
+        "System.Void DatabaseLayer.Class1::Main(System.String[])": {
+          "Lines": {
+            "13": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\DatabaseLayer\\testprojectContext.cs": {
+      "DatabaseLayer.testprojectContext": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<ModelsLayer.EfModels.Administrator> DatabaseLayer.testprojectContext::get_Administrators()": {
+          "Lines": {
+            "21": 3
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<ModelsLayer.EfModels.Customer> DatabaseLayer.testprojectContext::get_Customers()": {
+          "Lines": {
+            "22": 10
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<ModelsLayer.EfModels.Order> DatabaseLayer.testprojectContext::get_Orders()": {
+          "Lines": {
+            "23": 3
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<ModelsLayer.EfModels.OrderItem> DatabaseLayer.testprojectContext::get_OrderItems()": {
+          "Lines": {
+            "24": 3
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<ModelsLayer.EfModels.Product> DatabaseLayer.testprojectContext::get_Products()": {
+          "Lines": {
+            "25": 3
+          },
+          "Branches": []
+        },
+        "Microsoft.EntityFrameworkCore.DbSet`1<ModelsLayer.EfModels.SignIn> DatabaseLayer.testprojectContext::get_SignIns()": {
+          "Lines": {
+            "26": 3
+          },
+          "Branches": []
+        },
+        "System.Void DatabaseLayer.testprojectContext::OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)": {
+          "Lines": {
+            "29": 3,
+            "30": 3,
+            "31": 3,
+            "33": 3,
+            "34": 3,
+            "35": 3
+          },
+          "Branches": [
+            {
+              "Line": 30,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 30,
+              "Offset": 12,
+              "EndOffset": 29,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 3
+            }
+          ]
+        },
+        "System.Void DatabaseLayer.testprojectContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "38": 1,
+            "39": 1,
+            "41": 1,
+            "42": 1,
+            "43": 1,
+            "44": 1,
+            "45": 1,
+            "46": 1,
+            "47": 1,
+            "48": 1,
+            "49": 1,
+            "50": 1,
+            "51": 1,
+            "52": 1,
+            "53": 1,
+            "54": 1,
+            "55": 1,
+            "56": 1,
+            "57": 1,
+            "58": 1,
+            "59": 1,
+            "60": 1,
+            "61": 1,
+            "62": 1,
+            "63": 2,
+            "65": 1,
+            "66": 1,
+            "67": 1,
+            "68": 1,
+            "69": 1,
+            "70": 1,
+            "71": 1,
+            "72": 1,
+            "73": 1,
+            "74": 1,
+            "75": 1,
+            "76": 1,
+            "77": 1,
+            "78": 2,
+            "80": 1,
+            "81": 1,
+            "82": 1,
+            "83": 1,
+            "84": 1,
+            "85": 1,
+            "86": 1,
+            "87": 1,
+            "88": 1,
+            "89": 1,
+            "90": 2,
+            "92": 1,
+            "93": 1,
+            "94": 1,
+            "95": 1,
+            "96": 1,
+            "97": 1,
+            "98": 1,
+            "99": 1,
+            "100": 1,
+            "101": 1,
+            "102": 1,
+            "103": 1,
+            "104": 1,
+            "105": 1,
+            "106": 1,
+            "107": 1,
+            "108": 1,
+            "109": 1,
+            "110": 2,
+            "112": 1,
+            "113": 1,
+            "114": 1,
+            "115": 1,
+            "116": 1,
+            "117": 1,
+            "118": 1,
+            "119": 1,
+            "120": 1,
+            "121": 1,
+            "122": 1,
+            "123": 1,
+            "124": 1,
+            "125": 1,
+            "126": 1,
+            "127": 1,
+            "128": 1,
+            "129": 1,
+            "130": 1,
+            "131": 1,
+            "132": 2,
+            "134": 1,
+            "135": 1,
+            "136": 1,
+            "137": 1,
+            "138": 1,
+            "139": 1,
+            "140": 1,
+            "141": 1,
+            "142": 1,
+            "143": 1,
+            "144": 1,
+            "145": 1,
+            "146": 1,
+            "147": 1,
+            "148": 1,
+            "149": 1,
+            "150": 1,
+            "151": 1,
+            "152": 1,
+            "153": 1,
+            "154": 1,
+            "155": 1,
+            "156": 1,
+            "157": 1,
+            "158": 1,
+            "159": 2,
+            "162": 1
+          },
+          "Branches": []
+        },
+        "System.Void DatabaseLayer.testprojectContext::.ctor()": {
+          "Lines": {
+            "12": 3,
+            "13": 3,
+            "14": 3
+          },
+          "Branches": []
+        },
+        "System.Void DatabaseLayer.testprojectContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<DatabaseLayer.testprojectContext>)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "ModelsLayer.dll": {
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\ModelsLayer\\ViewModels\\ViewModelCustomer.cs": {
+      "DatabaseLayer.ViewModelCustomer": {
+        "System.Int32 DatabaseLayer.ViewModelCustomer::get_Id()": {
+          "Lines": {
+            "23": 118
+          },
+          "Branches": []
+        },
+        "System.String DatabaseLayer.ViewModelCustomer::get_FirstName()": {
+          "Lines": {
+            "24": 119
+          },
+          "Branches": []
+        },
+        "System.String DatabaseLayer.ViewModelCustomer::get_LastName()": {
+          "Lines": {
+            "25": 118
+          },
+          "Branches": []
+        },
+        "System.Void DatabaseLayer.ViewModelCustomer::.ctor(System.String,System.String)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Void DatabaseLayer.ViewModelCustomer::.ctor(System.Int32,System.String,System.String)": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.Void DatabaseLayer.ViewModelCustomer::.ctor()": {
+          "Lines": {
+            "21": 345
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\ModelsLayer\\EfModels\\Administrator.cs": {
+      "ModelsLayer.EfModels.Administrator": {
+        "System.Int32 ModelsLayer.EfModels.Administrator::get_Id()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.Administrator::get_FirstName()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.Administrator::get_LastName()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.Administrator::get_EmailAddress()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.Administrator::get_Role()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<ModelsLayer.EfModels.SignIn> ModelsLayer.EfModels.Administrator::get_SignIns()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Void ModelsLayer.EfModels.Administrator::.ctor()": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\ModelsLayer\\EfModels\\Customer.cs": {
+      "ModelsLayer.EfModels.Customer": {
+        "System.Int32 ModelsLayer.EfModels.Customer::get_Id()": {
+          "Lines": {
+            "16": 118
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.Customer::get_FirstName()": {
+          "Lines": {
+            "17": 124
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.Customer::get_LastName()": {
+          "Lines": {
+            "18": 124
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<ModelsLayer.EfModels.Order> ModelsLayer.EfModels.Customer::get_Orders()": {
+          "Lines": {
+            "20": 62
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<ModelsLayer.EfModels.SignIn> ModelsLayer.EfModels.Customer::get_SignIns()": {
+          "Lines": {
+            "21": 62
+          },
+          "Branches": []
+        },
+        "System.Void ModelsLayer.EfModels.Customer::.ctor()": {
+          "Lines": {
+            "10": 62,
+            "11": 62,
+            "12": 62,
+            "13": 62,
+            "14": 62
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\ModelsLayer\\EfModels\\Order.cs": {
+      "ModelsLayer.EfModels.Order": {
+        "System.Int32 ModelsLayer.EfModels.Order::get_Id()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 ModelsLayer.EfModels.Order::get_CustomerId()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 ModelsLayer.EfModels.Order::get_NumberOfItems()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Decimal ModelsLayer.EfModels.Order::get_TotalPrice()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "ModelsLayer.EfModels.Customer ModelsLayer.EfModels.Order::get_Customer()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<ModelsLayer.EfModels.OrderItem> ModelsLayer.EfModels.Order::get_OrderItems()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Void ModelsLayer.EfModels.Order::.ctor()": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\ModelsLayer\\EfModels\\OrderItem.cs": {
+      "ModelsLayer.EfModels.OrderItem": {
+        "System.Int32 ModelsLayer.EfModels.OrderItem::get_Id()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 ModelsLayer.EfModels.OrderItem::get_OrderId()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.OrderItem::get_ProductId()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "ModelsLayer.EfModels.Order ModelsLayer.EfModels.OrderItem::get_Order()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "ModelsLayer.EfModels.Product ModelsLayer.EfModels.OrderItem::get_Product()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\ModelsLayer\\EfModels\\Product.cs": {
+      "ModelsLayer.EfModels.Product": {
+        "System.String ModelsLayer.EfModels.Product::get_Id()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.Product::get_Name()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.Product::get_Description()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Decimal ModelsLayer.EfModels.Product::get_Price()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Int32> ModelsLayer.EfModels.Product::get_Inventory()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ICollection`1<ModelsLayer.EfModels.OrderItem> ModelsLayer.EfModels.Product::get_OrderItems()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Void ModelsLayer.EfModels.Product::.ctor()": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\ModelsLayer\\EfModels\\SignIn.cs": {
+      "ModelsLayer.EfModels.SignIn": {
+        "System.Int32 ModelsLayer.EfModels.SignIn::get_Id()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.SignIn::get_UserName()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String ModelsLayer.EfModels.SignIn::get_Password()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Int32> ModelsLayer.EfModels.SignIn::get_CustomerId()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Int32> ModelsLayer.EfModels.SignIn::get_AdministratorId()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "ModelsLayer.EfModels.Administrator ModelsLayer.EfModels.SignIn::get_Administrator()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "ModelsLayer.EfModels.Customer ModelsLayer.EfModels.SignIn::get_Customer()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "StorageLayer.dll": {
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\StorageLayer\\CustomerRepository.cs": {
+      "StorageLayer.CustomerRepository": {
+        "System.Void StorageLayer.CustomerRepository::.ctor(DatabaseLayer.testprojectContext)": {
+          "Lines": {
+            "20": 4,
+            "21": 4,
+            "22": 4,
+            "23": 4
+          },
+          "Branches": []
+        }
+      },
+      "StorageLayer.CustomerRepository/<LoginCustomerAsync>d__2": {
+        "System.Void StorageLayer.CustomerRepository/<LoginCustomerAsync>d__2::MoveNext()": {
+          "Lines": {
+            "32": 2,
+            "33": 2,
+            "34": 2,
+            "35": 3,
+            "36": 1,
+            "37": 1,
+            "38": 2
+          },
+          "Branches": [
+            {
+              "Line": 35,
+              "Offset": 237,
+              "EndOffset": 239,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 35,
+              "Offset": 237,
+              "EndOffset": 243,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "StorageLayer.CustomerRepository/<RegisterCustomerAsync>d__3": {
+        "System.Void StorageLayer.CustomerRepository/<RegisterCustomerAsync>d__3::MoveNext()": {
+          "Lines": {
+            "41": 1,
+            "42": 1,
+            "43": 1,
+            "44": 1,
+            "45": 1,
+            "46": 1
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 229,
+              "EndOffset": 231,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 229,
+              "EndOffset": 238,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      },
+      "StorageLayer.CustomerRepository/<CustomerListAsync>d__4": {
+        "System.Void StorageLayer.CustomerRepository/<CustomerListAsync>d__4::MoveNext()": {
+          "Lines": {
+            "49": 4,
+            "50": 4,
+            "51": 4,
+            "52": 236,
+            "53": 112,
+            "54": 112,
+            "55": 112,
+            "56": 4,
+            "57": 4
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 266,
+              "EndOffset": 206,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 112
+            },
+            {
+              "Line": 52,
+              "Offset": 266,
+              "EndOffset": 268,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 4
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\StorageLayer\\ModelMapper.cs": {
+      "StorageLayer.ModelMapper": {
+        "DatabaseLayer.ViewModelCustomer StorageLayer.ModelMapper::CustomerToViewModelCustomer(ModelsLayer.EfModels.Customer)": {
+          "Lines": {
+            "20": 115,
+            "21": 115,
+            "22": 115,
+            "23": 115,
+            "24": 115,
+            "25": 115,
+            "26": 115
+          },
+          "Branches": []
+        },
+        "ModelsLayer.EfModels.Customer StorageLayer.ModelMapper::ViewModelCustomerToCustomer(DatabaseLayer.ViewModelCustomer)": {
+          "Lines": {
+            "34": 3,
+            "35": 3,
+            "36": 3,
+            "37": 3,
+            "38": 3,
+            "39": 3,
+            "40": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\joshu\\source\\repos\\P2_CafeAPI\\CafeAPI\\StorageLayer\\Interfaces\\IModelMapper.cs": {
+      "StorageLayer.Interfaces.IModelMapper": {
+        "DatabaseLayer.ViewModelCustomer StorageLayer.Interfaces.IModelMapper::CustomerToViewModelCustomer(ModelsLayer.EfModels.Customer)": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "ModelsLayer.EfModels.Customer StorageLayer.Interfaces.IModelMapper::ViewModelCustomerToCustomer(DatabaseLayer.ViewModelCustomer)": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

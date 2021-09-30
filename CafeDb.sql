@@ -1,8 +1,18 @@
+CREATE DATABASE testproject2;
+
+USE testproject2
+go
+
 --create Customers table
 CREATE TABLE Customer(
 Id INT PRIMARY KEY IDENTITY,
 FirstName varchar(50) NOT NULL,
 LastName varchar(50) NOT NULL);
+INSERT INTO dbo.Customer (FirstName, LastName)
+VALUES ('Rick', 'Torres');
+
+INSERT INTO dbo.Customer (FirstName, LastName)
+VALUES ('Tony', 'Montana');
 
 -- create Administrator table
 CREATE TABLE Administrator(
@@ -21,7 +31,8 @@ AdministratorId INT FOREIGN KEY REFERENCES Administrator(Id) ON DELETE CASCADE)
 
 -- create Products table
 CREATE TABLE Product(
-Id INT PRIMARY KEY IDENTITY,
+Id int  PRIMARY KEY IDENTITY,
+ProductId varchar(50) NOT NULL,
 [Name] varchar(50) NOT NULL,
 [Description] varchar(100),
 Price decimal(20,4) NOT NULL,

@@ -1,3 +1,4 @@
+<app-menu-side-bar></app-menu-side-bar>
 <div class="view-cart-component">
   <div *ngIf="!isShown">
     <button (click)="toggleShow()">
@@ -10,7 +11,5 @@
     <app-view-cart></app-view-cart>
   </div>
 </div>
-
-<app-search-bar *ngIf="router.url != '/productlist'"></app-search-bar>
-
+<app-search-bar *ngIf="!(router.url === '/login' || router.url === '/register' || '/productlist')"></app-search-bar>
 <router-outlet></router-outlet>

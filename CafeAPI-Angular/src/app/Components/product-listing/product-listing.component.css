@@ -14,11 +14,13 @@ a {
 
 h1 {
   text-align: center;
+  color: white;
 }
 
 li {
   list-style-type: none;
   padding-bottom: 5px;
+  color: white;
 }
 
 img {
