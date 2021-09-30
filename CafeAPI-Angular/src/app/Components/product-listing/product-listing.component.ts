@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/Models/product';
 import { ProductService } from 'src/app/Services/product.service';
+import { MenuSideBarComponent } from '../menu-side-bar/menu-side-bar.component';
 
 @Component({
   selector: 'app-product-listing',
@@ -10,6 +11,7 @@ import { ProductService } from 'src/app/Services/product.service';
 export class ProductListingComponent implements OnInit {
   searchTerm!: string;
   productlisting$: Product[] = [];
+  productlisting$2: Product[] = [];
 
   constructor(private productService: ProductService) { }
 
@@ -32,4 +34,10 @@ export class ProductListingComponent implements OnInit {
       });
   }
 
+  // for (let item of this.productlisting$) {
+  //   if (item.id == null || item.title == null || item.price == null || item.image == null || item.id == undefined || item.title == undefined || item.price == undefined || item.image == undefined) {
+  //     this.productlisting$2.push(item);
+  //   }
+  // }
+  // this.productlisting$ = this.productlisting$2;
 }
