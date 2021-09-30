@@ -12,5 +12,11 @@ namespace StorageLayer.Interfaces
 	{
 		ViewModelCustomer CustomerToViewModelCustomer(Customer c) { throw new NotImplementedException(); }
 		Customer ViewModelCustomerToCustomer(ViewModelCustomer c) { throw new NotImplementedException(); }
+		ViewModelOrder OrderToViewModelOrder(Order o) { throw new NotImplementedException(); }
+		Order ViewModelOrderToOrder(ViewModelOrder o) { throw new NotImplementedException(); }
+		ViewModelOrderItem OrderItemToViewModelOrderItem(OrderItem oi) { throw new NotImplementedException(); }
+		OrderItem ViewModelOrderItemToOrderItem(ViewModelOrderItem oi) { throw new NotImplementedException(); }
+		ViewModelProduct ProductToViewModelProduct(Product p) { throw new NotImplementedException(); }
+		Product ViewModelProductToProduct(ViewModelProduct p) { throw new NotImplementedException(); }
 	}
 }
