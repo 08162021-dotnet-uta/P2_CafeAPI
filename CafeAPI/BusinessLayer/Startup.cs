@@ -17,6 +17,7 @@ using ModelsLayer.EfModels;
 using BusinessLayer.Controllers;
 using DatabaseLayer;
 using Microsoft.EntityFrameworkCore;
+using StorageLayer.Repositories;
 
 namespace BusinessLayer
 {
@@ -66,15 +67,16 @@ namespace BusinessLayer
                 //if db options is already configured, done do anything..
                 // otherwise use the Connection string I have in secrets.json
 
-                //if (!options.IsConfigured)
-                //{
-                //    options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
-                //}
+                if (!options.IsConfigured)
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
+                }
             });
 
             //registering classes with the DI system.
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IModelMapper, ModelMapper>();
+            services.AddScoped<IProductRepository, ProductRepository>();
            // services.AddMvc(c => c.Conventions.Add(new ApiExplorerIgnores()));
         }
 

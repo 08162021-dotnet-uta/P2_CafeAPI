@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 export class ProductComponent implements OnInit {
   //product user clicked on has to be initialized
   product: Product = {
-    asin: 'abada', title: "banana", price: { value: 2.99, currency: "USD" }, image: "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1200-80.jpg"
+    asin: 'aabb', title: "banana", price: { value: 2.99, currency: "USD" }, image: "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1200-80.jpg"
   }
   //whether or not the product is out of stock
   outOfStock?: boolean;
@@ -49,7 +49,18 @@ export class ProductComponent implements OnInit {
 
   setOutOfStockBool(id: string): void{this.productService.outOfStock(id).subscribe(bool => this.outOfStock = bool)}
 
-  addToCart(id: string): void {
+  // addToCart(id: string): void {
+
+  //   this.cartString = sessionStorage.getItem("cart")
+
+  //   if (this.cartString != null) this.cart = JSON.parse(this.cartString);
+  //   //user automatically has an empty cart in sessionStorage, as opposed to no cart at all
+  //   else sessionStorage.setItem("cart", JSON.stringify(this.cart))
+
+  //   this.setOutOfStockBool(id);
+  //   if (!this.outOfStock) { this.cart.push(this.product); sessionStorage.setItem("cart", JSON.stringify(this.cart)) }
+  // }
+  addToCart(id: string = 'aabb'): void {
 
     this.cartString = sessionStorage.getItem("cart")
 
@@ -58,6 +69,7 @@ export class ProductComponent implements OnInit {
     else sessionStorage.setItem("cart", JSON.stringify(this.cart))
 
     this.setOutOfStockBool(id);
+    console.log(this.outOfStock)
     if (!this.outOfStock) { this.cart.push(this.product); sessionStorage.setItem("cart", JSON.stringify(this.cart)) }
   }
 
