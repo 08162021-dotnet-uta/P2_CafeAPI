@@ -39,7 +39,7 @@ export class ProductService {
     const results = JSON.parse(sessionStorage.getItem('results')!);
     const item: Product = results.find((x: { asin: string; }) => x.asin === id);
     console.log(item);
-    return { asin: item.asin, title: item.title, price: item.price, image: item.image };
+    return item;
   }
 
   /**
