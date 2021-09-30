@@ -12,7 +12,10 @@ namespace ModelsLayer.EfModels
             OrderItems = new HashSet<OrderItem>();
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
+
+        // added ProductId, did not exist
+        public string ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
