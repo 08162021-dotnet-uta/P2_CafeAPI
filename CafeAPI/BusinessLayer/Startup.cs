@@ -57,10 +57,10 @@ namespace BusinessLayer
             });
             services.AddDbContext<testprojectContext>(options =>
             {
-                //if (options.IsConfigured)
-                //{
-                //    options.UseSqlServer(Configuration.GetConnectionString("DevDb"));
-                //}
+                if (!options.IsConfigured)
+                {
+                    options.UseSqlServer(Configuration.GetConnectionString("DevDb"));
+                }
                 //if db options is already configured, done do anything..
                 // otherwise use the Connection string I have in secrets.json
 
