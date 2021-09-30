@@ -10,7 +10,9 @@ export class ViewCartComponent implements OnInit {
     //users cart, stored in sessionStorage
     cart : Product[] = [];
     //used to parse cart
-    cartString ?: string | null
+    cartString ?: string | null;
+    // used to check if user is logged in
+    loginString?: string | null;
     cartEmpty: string = "Empty cart";
     isEmpty: boolean = true;
 
@@ -18,6 +20,15 @@ export class ViewCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCart();
+  }
+
+  loginStatus(): void {
+    this.loginString = sessionStorage.getItem('user');
+    if (this.loginString == null) {
+      window.location.href = '/login';
+    } else {
+      this.placeOrder();
+    }
   }
 
   // prints to the user their cart is empty
@@ -35,6 +46,10 @@ export class ViewCartComponent implements OnInit {
       this.isEmpty = !this.isEmpty;
       this.cart = JSON.parse(this.cartString);
     }
+  }
+
+  placeOrder(): void {
+
   }
 
 }
