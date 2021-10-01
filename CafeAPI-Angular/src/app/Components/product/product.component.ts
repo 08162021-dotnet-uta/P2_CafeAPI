@@ -39,7 +39,7 @@ export class ProductComponent implements OnInit {
     this.cart = []; 
     this.getProduct(); 
     this.postProductToApi();
-    this.setOutOfStockBool(this.product.asin)
+    //this.setOutOfStockBool(this.product.asin)
     this.getProductListing();
   }
 
