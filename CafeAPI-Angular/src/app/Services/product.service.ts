@@ -8,7 +8,7 @@ import { Product } from '../Models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl: string = `https://api.rainforestapi.com/request?api_key=4EEDADFC0F7B4CD3B0996DEA09B90586&type=search&amazon_domain=amazon.com&search_term=`;
+  private apiUrl: string = `https://api.rainforestapi.com/request?api_key=00FA2127787C4FEF8C76B2A536ABD4AD&type=search&amazon_domain=amazon.com&search_term=`;
   searchTerm!: string;
 
   constructor(private http: HttpClient) { }
@@ -34,7 +34,7 @@ export class ProductService {
       );
   }
 
-  // returns a single product when the use click on a product 
+  // returns a single product when the use click on a product
   getProduct(id: string): Product {
     const results = JSON.parse(sessionStorage.getItem('results')!);
     const item: Product = results.find((x: { asin: string; }) => x.asin === id);
