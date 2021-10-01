@@ -61,9 +61,9 @@ namespace StorageLayer
         public async Task<ViewModelProduct> PostProductAsync(ViewModelProduct p)
         {
             Product p1 = ModelMapper.ViewModelProductToProduct(p);
-            int i = await _context.Database.ExecuteSqlRawAsync("INSERT INTO Product (Id, Name, Description, Price, Inventory) VALUES ({0},{1}),{2},{3},{4}", p.Id, p.Name, p.Description, p.Price, p.Inventory);// default is NULL
+            int i = await _context.Database.ExecuteSqlRawAsync("INSERT INTO Product (id, name, description, price, inventory) VALUES ({0},{1},{2},{3},{4})", p1.Id, p1.Name, p1.Description, p1.Price, p1.Inventory);// default is NULL
             if (i != 1) return null;
-            return await GetProductAsync(p.Id);
+            return await GetProductAsync(p1.Id);
         }
     }
 }
