@@ -16,13 +16,13 @@ describe('ProductService', () => {
   let searchTerm = 'lemon';
   const expectedProducts: Product[] = [
     {
-      id: 'ABCD1234',
+      asin: 'ABCD1234',
       title: 'lemonade',
       price: { value: 3.99, currency: 'USD' },
       image: 'picOfLemonade',
     },
     {
-      id: 'ABCD5678',
+      asin: 'ABCD5678',
       title: 'lemon',
       price: { value: 1.99, currency: 'USD' },
       image: 'picOfLemon',

@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/Services/product.service';
 import { Observable, of } from 'rxjs';
 import { Product } from 'src/app/Models/product';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 //things being faked to test 'Add_item_to_cart': product, sessionStorage(getitem,setitem), service call
 
 describe('ProductComponent', () => {
@@ -22,9 +23,9 @@ describe('ProductComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [HttpClientModule,RouterTestingModule],
       declarations: [ProductComponent],
-      providers: [ProductService],
+      providers: [ProductService]
     });
     fixture = TestBed.createComponent(ProductComponent);
     service = fixture.debugElement.injector.get(ProductService);
@@ -33,7 +34,7 @@ describe('ProductComponent', () => {
       asin: 'ABCDE12345',
       title: 'pineapple',
       price: { value: 9.99, currency: 'USD' },
-      image: 'https://m.media-amazon.com/images/I/71+qAJehpkL._SL1500_.jpg',
+      image: 'https://m.media-amazon.com/images/I/71+qAJehpkL._SL1500_.jpg'
     };
     fixture.detectChanges();
   });

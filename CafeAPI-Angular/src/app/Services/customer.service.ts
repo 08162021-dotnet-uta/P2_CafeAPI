@@ -10,8 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class CustomerService {
 
   constructor(private http: HttpClient) { }
-  private url2 = 'api/customers'
-  private url1 = 'https://localhost:5001'
+  private url1 = 'https://p2cafeapi.azurewebsites.net'
 
   httpOptions = {
     headers: new HttpHeaders({
