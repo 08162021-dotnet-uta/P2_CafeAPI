@@ -3,8 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginCustomerComponent } from './login-customer.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CustomerService } from '../../customer.service';
-import { httpClientInMemBackendServiceFactory } from 'angular-in-memory-web-api';
+import { CustomerService } from '../../Services/customer.service';
+//import { httpClientInMemBackendServiceFactory } from 'angular-in-memory-web-api';
 
 
 describe('Component: Login', () => {

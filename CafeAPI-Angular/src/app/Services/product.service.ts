@@ -10,6 +10,7 @@ import { Product } from '../Models/product';
 export class ProductService {
   private apiUrl: string = `https://api.rainforestapi.com/request?api_key=4EEDADFC0F7B4CD3B0996DEA09B90586&type=search&amazon_domain=amazon.com&search_term=`;
   searchTerm!: string;
+  private cafeAPIurl : string = "https://p2cafeapi.azurewebsites.net" 
 
   constructor(private http: HttpClient) { }
   //The literal below will replaced by the result of the call to CafeAPI to see is the item is out-of-stock

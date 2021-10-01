@@ -21,7 +21,7 @@ describe('ProductListingComponent', () => {
     }).compileComponents();
 
     product = {
-      id: 'ABCD1234',
+      asin: 'ABCD1234',
       title: 'memory card',
       price: {
         value: 3.99,
