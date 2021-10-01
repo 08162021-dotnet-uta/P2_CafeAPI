@@ -11,6 +11,19 @@ Simply press the button to add an item to the cart -->
   <div class="list">
     <p>Price: {{product.price.value}}</p>
   </div>
+
   <!-- Kyle's button -->
   <button (click)="addToCart(product.asin)">Add to cart</button>
+  <div>
+    <button (click)="checkInventory()">Check Inventory</button>
+  </div>
+</div>
+<div class="details">
+
+  <div *ngIf="showInventory">
+    <p><span>Product name:</span> {{productView.name}}</p>
+    <p><span>Stock:</span> {{productView.inventory}}</p>
+    <div *ngIf="productView.description; else elseBlock"> {{productView.description}}</div>
+    <ng-template #elseBlock><span>Review:</span> No reviews yet.</ng-template>
+  </div>
 </div>

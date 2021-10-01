@@ -38,7 +38,7 @@ export class ProductService {
   getProduct(id: string): Product {
     const results = JSON.parse(sessionStorage.getItem('results')!);
     const item: Product = results.find((x: { asin: string; }) => x.asin === id);
-    console.log(item);
+    // console.log(item);
     return item;
   }
 
