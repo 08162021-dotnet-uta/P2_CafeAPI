@@ -5,12 +5,12 @@ import { JsonPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
+
 export class ProductComponent implements OnInit {
   //product user clicked on has to be initialized
   product: Product = {
@@ -28,11 +28,12 @@ export class ProductComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location
   ) {
-    this.cart = []; this.setOutOfStockBool("aabb")
+    this.cart = []; 
+    this.getProduct(); 
+    this.setOutOfStockBool(this.product.asin)
   }
 
   ngOnInit(): void {
-    this.getProduct(); 
   }
 
   // gets a single product from the product list stored in the sessionStorage
@@ -47,24 +48,9 @@ export class ProductComponent implements OnInit {
     this.location.back();
   }
 
-    setOutOfStockBool(id: string): void{this.productService.outOfStock(id).subscribe(bool => this.outOfStock = bool)}
-  //setOutOfStockBool(id: string): boolean{let the : boolean = false;this.productService.outOfStock(id).subscribe(function(bool){the = bool;console.log(the,"in")}) 
-    //console.log(the,"out"); return true;}
-  //setOutOfStockBool(id: string): boolean{return this.pro outOfStock(id).pipe(map(bool => { return bool? true:false}));}
+  setOutOfStockBool(id: string): void{this.productService.outOfStock(id).subscribe(bool => this.outOfStock = bool)}
+  addToCart(id: string): void {
 
-  // addToCart(id: string): void {
-
-  //   this.cartString = sessionStorage.getItem("cart")
-
-  //   if (this.cartString != null) this.cart = JSON.parse(this.cartString);
-  //   //user automatically has an empty cart in sessionStorage, as opposed to no cart at all
-  //   else sessionStorage.setItem("cart", JSON.stringify(this.cart))
-
-  //   this.setOutOfStockBool(id);
-  //   if (!this.outOfStock) { this.cart.push(this.product); sessionStorage.setItem("cart", JSON.stringify(this.cart)) }
-  // }
-  addToCart(): void {
-    let id: string = 'aabb'
     this.cartString = sessionStorage.getItem("cart")
 
     if (this.cartString != null) this.cart = JSON.parse(this.cartString);
@@ -72,8 +58,6 @@ export class ProductComponent implements OnInit {
     else sessionStorage.setItem("cart", JSON.stringify(this.cart))
 
     this.setOutOfStockBool(id);
-    console.log(this.outOfStock)
     if (!this.outOfStock) { this.cart.push(this.product); sessionStorage.setItem("cart", JSON.stringify(this.cart)) }
   }
-
 }
