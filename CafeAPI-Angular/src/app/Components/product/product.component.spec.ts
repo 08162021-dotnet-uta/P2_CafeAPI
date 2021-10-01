@@ -30,7 +30,7 @@ describe('ProductComponent', () => {
     service = fixture.debugElement.injector.get(ProductService);
     component = fixture.componentInstance;
     component.product = {
-      id: 'ABCDE12345',
+      asin: 'ABCDE12345',
       title: 'pineapple',
       price: { value: 9.99, currency: 'USD' },
       image: 'https://m.media-amazon.com/images/I/71+qAJehpkL._SL1500_.jpg',
@@ -60,7 +60,7 @@ describe('ProductComponent', () => {
   //things relevant to testing 'Add_item_to_cart':out of stock, not out of stock, cart empty, cart not empty, no cart to begin with
   it('when out of stock and user never had a cart to begin with, cart remains empty', () => {
     spyOn(service, 'outOfStock').and.returnValue(of(true));
-    component.addToCart(component.product.id);
+    component.addToCart(component.product.asin);
     expect(JSON.parse(map.get('cart')).length).toBe(0);
     map.clear();
   });
@@ -68,13 +68,13 @@ describe('ProductComponent', () => {
   it('when in stock and cart not empty, cart will contain an additional item', () => {
     let cart: Product[] = [
       {
-        id: 'ZYXW9876',
+        asin: 'ZYXW9876',
         title: 'soap',
         price: { value: 2.99, currency: 'USD' },
         image: 'https://dkstore.online/wp-content/uploads/2016/03/41.jpg',
       },
       {
-        id: 'ZYXW5432',
+        asin: 'ZYXW5432',
         title: 'sun glasses',
         price: { value: 10.99, currency: 'USD' },
         image:
@@ -83,7 +83,7 @@ describe('ProductComponent', () => {
     ];
     map.set('cart', JSON.stringify(cart));
     spyOn(service, 'outOfStock').and.returnValue(of(false));
-    component.addToCart(component.product.id);
+    component.addToCart(component.product.asin);
     expect(JSON.parse(map.get('cart')).length).toEqual(3);
     map.clear();
   });
