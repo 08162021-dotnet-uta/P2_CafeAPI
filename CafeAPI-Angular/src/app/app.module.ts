@@ -15,6 +15,7 @@ import { ProductComponent } from './Components/product/product.component';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 import { ProductListingComponent } from './Components/product-listing/product-listing.component';
 import { ViewCartComponent } from './Components/view-cart/view-cart.component';
+import { ProductApiService } from './Services/product-api.service';
 
 @NgModule({
   declarations: [
