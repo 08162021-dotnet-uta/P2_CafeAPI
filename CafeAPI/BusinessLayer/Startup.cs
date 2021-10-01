@@ -17,7 +17,6 @@ using ModelsLayer.EfModels;
 using BusinessLayer.Controllers;
 using DatabaseLayer;
 using Microsoft.EntityFrameworkCore;
-using StorageLayer.Repositories;
 
 namespace BusinessLayer
 {
@@ -75,6 +74,7 @@ namespace BusinessLayer
 
             //registering classes with the DI system.
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IModelMapper, ModelMapper>();
             services.AddScoped<IProductRepository, ProductRepository>();
            // services.AddMvc(c => c.Conventions.Add(new ApiExplorerIgnores()));

@@ -39,6 +39,39 @@ namespace StorageLayer
 			return c1;
 		}
 
-		
+		/// <summary>
+		/// This method takes a ViewModelProduct and returns the mapping to a Product
+		/// </summary>
+		/// <param name="p"></param>
+		/// <returns></returns>
+		public static Product ViewModelProductToProduct(ViewModelProduct p)
+		{
+			Product p1 = new Product();
+			p1.Id = p.Id;
+			p1.Name = p.Name;
+			p1.Description = p.Description;
+			p1.Price = p.Price;
+			p1.Inventory = p.Inventory;
+			return p1;
+		}
+
+		/// <summary>
+		/// This method takes a Product and returns the mapping to a ViewModelProduct
+		/// </summary>
+		/// <param name="p"></param>
+		/// <returns></returns>
+		public static ViewModelProduct ProductToViewModelProduct(Product p)
+		{
+			ViewModelProduct p1 = new ViewModelProduct();
+			p1.Id = p.Id;
+			p1.Name = p.Name;
+			p1.Description = p.Description;
+			p1.Price = p.Price;
+			p1.Inventory = p.Inventory;
+
+			return p1;
+		}
+
+
 	}
 }

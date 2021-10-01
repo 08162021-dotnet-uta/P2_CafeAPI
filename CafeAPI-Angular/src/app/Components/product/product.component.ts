@@ -4,6 +4,8 @@ import { Product } from 'src/app/Models/product';
 import { JsonPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { ProductApiService } from 'src/app/Services/product-api.service';
+import { ProductView } from 'src/app/Models/productView';
 
 @Component({
   selector: 'app-product',
@@ -16,6 +18,10 @@ export class ProductComponent implements OnInit {
   product: Product = {
     asin: 'asflk', title: "banana", price: { value: 2.99, currency: "USD" }, image: "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1200-80.jpg"
   }
+  productView: ProductView = { id: 'ag', name: 'test', description: '', price: 99.99, inventory: 1 };
+  showInventory: boolean = false;
+  // This list is the list of products from the DB.
+  productsApi: ProductView[] = [];
   //whether or not the product is out of stock
   outOfStock ?: boolean 
   //users cart, stored in sessionStorage
@@ -25,23 +31,56 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private productApiService: ProductApiService,
     private route: ActivatedRoute,
     private location: Location
+
   ) {
     this.cart = []; 
     this.getProduct(); 
+    this.postProductToApi();
     this.setOutOfStockBool(this.product.asin)
+    this.getProductListing();
   }
 
+  
+
   ngOnInit(): void {
+    
   }
 
   // gets a single product from the product list stored in the sessionStorage
   getProduct(): void {
     const id: string = this.route.snapshot.paramMap.get('id')!;
-    console.log(id);
+    // console.log(id);
     const item = this.productService.getProduct(id);
     this.product = item;
+  }
+
+  // this function returns the list of products from the DB
+  getProductListing(): void {
+    this.productApiService.ProductList()
+      .subscribe(productlisting => {
+        this.productsApi = productlisting;
+        console.log(this.productsApi);
+      });
+  }
+
+  checkInventory() {
+    this.getProductFromApi(this.product.asin);
+    this.showInventory = true;
+  }
+
+  postProductToApi(): void {
+    const p: ProductView = { id: this.product.asin, name: this.product.title, description: '', price: this.product.price.value, inventory: 10 };
+    // console.log(p);
+    this.productApiService.addProduct(p).subscribe();
+  }
+
+  getProductFromApi(id: string): void {
+    this.productApiService.getProduct(id)
+      .subscribe(prod => this.productView = prod);
+    console.log(`Got clicked product from back end: ${this.productView.name}`)
   }
 
   goBack(): void {
