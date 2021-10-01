@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ModelsLayer.EfModels;
+using StorageLayer;
 
 namespace BusinessLayer.Controllers
 {
@@ -24,10 +26,36 @@ namespace BusinessLayer.Controllers
         [HttpGet("list")]
         public List<ViewModelProduct> Details()
         {
-
+             
             List<ViewModelProduct> products = _productrepo.Products();
             return products;
         }
+
+        [HttpGet("detail/{id}")]
+        public async Task<ActionResult<ViewModelProduct>> GetProductById(string id)
+        {
+
+            if (!ModelState.IsValid) return BadRequest();
+
+            ViewModelProduct p = await _productrepo.GetProductAsync(id);
+            if (p == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(p);
+
+        }
+
+
+        //[HttpGet("outOfStock/{id}")]
+        //public async Task<ActionResult<Boolean>> Get(string id)
+        //{
+        //    if (!ModelState.IsValid) return BadRequest();
+        //    Boolean outOfStock = await _productrepo.outOfStockAsync(id);
+        //    if (!outOfStock) _productRepository.reduceStock(id);
+        //    return Ok(outOfStock);
+        //}
         //public IActionResult Index()
         //{
         //    return View();

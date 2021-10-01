@@ -33,5 +33,14 @@ namespace StorageLayer
 
             return vmp;
         }
+
+        public async Task<ViewModelProduct> GetProductAsync(string id)
+        {
+            Product p = await _context.Products.FromSqlRaw<Product>("select * from Product where Id = {0}", id).FirstOrDefaultAsync();
+
+            if (p == null) return null;
+            ViewModelProduct p1 = ModelMapper.ProductToViewModelProduct(p);
+            return p1;
+        }
     }
 }
