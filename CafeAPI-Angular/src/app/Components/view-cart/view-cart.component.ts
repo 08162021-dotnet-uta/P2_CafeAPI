@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/Models/customer';
 import { Order } from 'src/app/Models/order';
+import { OrderItem } from 'src/app/Models/order-item';
 import { Product } from 'src/app/Models/product';
 import { OrderService } from 'src/app/Services/order.service';
 
@@ -21,6 +22,7 @@ export class ViewCartComponent implements OnInit {
   order: Order = { customerId: 0, numberOfItems: 0, totalPrice: 0 };
   user!: Customer;
   totalPrice: number = 0;
+  orderitem: OrderItem = { orderId:0, productId: ""};
 
   constructor(private orderService: OrderService) {}
 
@@ -62,7 +64,7 @@ export class ViewCartComponent implements OnInit {
     this.order.numberOfItems = this.cart.length;
     for (let item of this.cart) {
       this.totalPrice += item.price.value;
-      // this.orderService.addOrderItem(item);
+      this.orderService.addOrderItem(this.order, item.asin);
     }
     this.order.totalPrice = this.totalPrice;
     console.log(this.order);

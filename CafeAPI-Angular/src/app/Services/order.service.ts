@@ -6,11 +6,13 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Customer } from '../Models/customer';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { OrderItem } from '../Models/order-item';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
+  orderitem: OrderItem = { orderId:0, productId: ""};
 
   constructor(private http: HttpClient) { }
 
@@ -30,9 +32,21 @@ export class OrderService {
     );
   }
 
-  // addOrderItem(product: Product): void {
-  //   return this.http.post<Order
-  // }
+  getOrders(customer: Customer): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.url}/Order/orderlist/${customer.id}`)
+    .pipe(
+      catchError(this.handleError<Order[]>('getOrders', []))
+    );
+  }
+
+  addOrderItem(orderId: number, productId: string): Observable<OrderItem> {
+    this.orderitem.orderId = orderId; // I don't know how to retrieve the orderId as it's only in the Db
+    this.orderitem.productId = productId;
+    return this.http.post<OrderItem>(`${this.url}/OrderItem/addorderitem`, this.orderitem, this.httpOptions).pipe(
+      tap((orderitem: OrderItem) => console.log(`added orderitem for order w / id=${orderitem.orderId}`)),
+      catchError(this.handleError<OrderItem>('addOrderItem'))
+    );
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

@@ -26,28 +26,29 @@ namespace StorageLayer
         /// </summary>
         /// <param name="vmo"></param>
         /// <returns></returns>
-        //public async Task<ViewModelOrder> OrderListAsync(int customerId)
-        //{
-        //    Order o1 = ModelMapper.ViewModelOrderToOrder(vmo);
-        //    Order o2 = await _context.Orders.FromSqlRaw<Order>("SELECT * FROM [Order] WHERE CustomerId = {0}", o1.CustomerId).FirstOrDefaultAsync();// default is NULL
-
-        //    if (o2 == null) return null;
-
-        //    ViewModelOrder o3 = ModelMapper.OrderToViewModelOrder(o2);
-        //    return o3;
-        //}
+        public async Task<List<ViewModelOrder>> OrderListAsync(int customerId)
+        {
+            //Order o1 = ModelMapper.ViewModelOrderToOrder(vmo);
+            List<Order> orders = await _context.Orders.FromSqlRaw<Order>("SELECT * FROM [Order] WHERE CustomerId = {0}", customerId).ToListAsync();
+            List<ViewModelOrder> vmo1 = new List<ViewModelOrder>();
+            foreach (Order order in orders)
+            {
+                vmo1.Add(ModelMapper.OrderToViewModelOrder(order));
+            }
+            return vmo1;
+        }
 
         /// <summary>
         /// This method will add a new order to the Order table in the Db
         /// </summary>
         /// <param name="vmo"></param>
         /// <returns></returns>
-        public async Task<ViewModelOrder> PlaceOrderAsync(ViewModelOrder vmo)
+        public async Task<List<ViewModelOrder>> PlaceOrderAsync(ViewModelOrder vmo)
         {
             Order o1 = ModelMapper.ViewModelOrderToOrder(vmo);
-            int o2 = await _context.Database.ExecuteSqlRawAsync("INSERT INTO [Order (CustomerId, NumberOfItems, TotalPrice) VALUES ({0},{1},{2})", o1.CustomerId, o1.NumberOfItems, o1.TotalPrice);// default is NULL
+            int o2 = await _context.Database.ExecuteSqlRawAsync("INSERT INTO [Order] (CustomerId, NumberOfItems, TotalPrice) VALUES ({0},{1},{2})", o1.CustomerId, o1.NumberOfItems, o1.TotalPrice);// default is NULL
             if (o2 != 1) return null;
-            return await OrderListAsync(vmo.CustomerId);
+            return await OrderListAsync(o1.CustomerId);
         }
     }
 }

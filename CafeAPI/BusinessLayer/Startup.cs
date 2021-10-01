@@ -73,6 +73,7 @@ namespace BusinessLayer
             //registering classes with the DI system.
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderItemRepository, OrderItemRepository>();
             //services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IModelMapper, ModelMapper>();
            // services.AddMvc(c => c.Conventions.Add(new ApiExplorerIgnores()));

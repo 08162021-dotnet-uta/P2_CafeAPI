@@ -1,4 +1,5 @@
 ﻿using DatabaseLayer;
+using ModelsLayer.EfModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace StorageLayer.Interfaces
 {
     public interface IOrderRepository
     {
-        Task<ViewModelOrder> PlaceOrderAsync(ViewModelOrder vmo);
-        Task<ViewModelOrder> OrderListAsync(ViewModelOrder vmo);
+        Task<List<ViewModelOrder>> PlaceOrderAsync(ViewModelOrder vmo);
+        Task<List<ViewModelOrder>> OrderListAsync(int customerId);
     }
 }

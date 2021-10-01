@@ -28,28 +28,28 @@ namespace BusinessLayer.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            ViewModelOrder o1 = await _orderrepo.PlaceOrderAsync(vmo);
+            List<ViewModelOrder> o1 = await _orderrepo.PlaceOrderAsync(vmo);
             if (o1 == null)
             {
                 return NotFound();
             }
-            return Created($"~order/{o1.Id}", o1);
+            return Created($"~order/{o1}", o1);
         }
 
-         // "/Order/orderlist"
-        [HttpGet("orderlist")]
-        public async Task<ActionResult<List<ViewModelOrder>>> Details()
+         // "/Order/orderlist/{customerId}"
+        [HttpGet("orderlist/{customerId}")]
+        public async Task<ActionResult<List<ViewModelOrder>>> Details(int customerId)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            Task<List<ViewModelOrder>> orders = _orderrepo.OrderListAsync();
+            List<ViewModelOrder> orders = await _orderrepo.OrderListAsync(customerId);
 
             if (orders == null)
             {
                 return NotFound();
             }
 
-            List<ViewModelOrder> orders1 = await orders;
+            List<ViewModelOrder> orders1 = orders;
 
             return orders1;
         }
