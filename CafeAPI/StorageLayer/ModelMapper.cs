@@ -104,7 +104,6 @@ namespace StorageLayer
         {
 			ViewModelProduct p1 = new ViewModelProduct();
 			p1.Id = p.Id;
-			p1.ProductId = p.ProductId;
 			p1.Name = p.Name;
 			p1.Description = p.Description;
 			p1.Price = p.Price;
@@ -121,7 +120,6 @@ namespace StorageLayer
         {
 			Product p1 = new Product();
 			p1.Id = p.Id;
-			p1.ProductId = p.ProductId;
 			p1.Name = p.Name;
 			p1.Description = p.Description;
 			p1.Price = p.Price;

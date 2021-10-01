@@ -7,14 +7,15 @@ namespace DatabaseLayer
 {
     public partial class ViewModelOrderItem
     {
-        public ViewModelOrderItem(int orderId, string productId)
+        public ViewModelOrderItem(int id, int orderId, string productId)
         {
+            Id = id;
             OrderId = orderId;
             ProductId = productId;
         }
         public ViewModelOrderItem() { }
 
-        //public int Id { get; set; }
+        public int Id { get; set; }
         public int OrderId { get; set; }
         public string ProductId { get; set; }
 

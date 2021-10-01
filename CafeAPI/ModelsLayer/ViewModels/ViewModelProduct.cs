@@ -11,55 +11,35 @@ namespace DatabaseLayer
     public partial class ViewModelProduct
     {
         // minimum required properties
-        public ViewModelProduct(string productId, string name, decimal price)
-        {
-            ProductId = productId;
-            Name = name;
-            Price = price;
-        }
-
-        // no description, no inventory
-        public ViewModelProduct(int id, string productId, string name, decimal price)
+        public ViewModelProduct(string id, string name, decimal price)
         {
             Id = id;
-            ProductId = productId;
             Name = name;
             Price = price;
         }
 
-        // no id, no inventory
-        public ViewModelProduct(string productId, string name, string description, decimal price)
+        // no inventory
+        public ViewModelProduct(string id, string name, string description, decimal price)
         {
-            ProductId = productId;
+            Id = id;
             Name = name;
             Description = description;
             Price = price;
         }
 
-        // no id, no description
-        public ViewModelProduct(string productId, string name, decimal price, int inventory)
+        // no description
+        public ViewModelProduct(string id, string name, decimal price, int inventory)
         {
-            ProductId = productId;
+            Id = id;
             Name = name;
-            Price = price;
-            Inventory = inventory;
-        }
-
-        // no id
-        public ViewModelProduct(string productId, string name, string description, decimal price, int inventory)
-        {
-            ProductId = productId;
-            Name = name;
-            Description = description;
             Price = price;
             Inventory = inventory;
         }
 
         // all
-        public ViewModelProduct(int id, string productId, string name, string description, decimal price, int inventory)
+        public ViewModelProduct(string id, string name, string description, decimal price, int inventory)
         {
             Id = id;
-            ProductId = productId;
             Name = name;
             Description = description;
             Price = price;
@@ -67,8 +47,7 @@ namespace DatabaseLayer
         }
         public ViewModelProduct() { }
 
-        public int Id { get; set; }
-        public string ProductId { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
