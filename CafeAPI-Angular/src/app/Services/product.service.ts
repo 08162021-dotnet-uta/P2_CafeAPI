@@ -8,16 +8,14 @@ import { Product } from '../Models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl: string = `https://api.rainforestapi.com/request?api_key=4EEDADFC0F7B4CD3B0996DEA09B90586&type=search&amazon_domain=amazon.com&search_term=`;
+  private apiUrl: string = `https://api.rainforestapi.com/request?api_key=00FA2127787C4FEF8C76B2A536ABD4AD&type=search&amazon_domain=amazon.com&search_term=`;
   searchTerm!: string;
-  private apiBackend: string = `https://localhost:44397/product/list/1290`;
 
   constructor(private http: HttpClient) { }
   //The literal below will replaced by the result of the call to CafeAPI to see is the item is out-of-stock
   //In This is the other input for testing my add-to-cart FE functionality (the other being the "Add to cart" button in app.component)
   //Possible input values for testing: true,false
-  // outOfStock(): Observable<boolean> { return of(false) }
-  outOfStock(): Observable<boolean> { return this.http.get<boolean>(this.apiBackend) };
+  outOfStock(): Observable<boolean> { return of(false) }
 
   // correctly format the search term to work in API request: 'memory+cards' instead of 'memory cards'
   formatSearchTerm(searchTerm: string): string {
@@ -40,7 +38,7 @@ export class ProductService {
   getProduct(id: string): Product {
     const results = JSON.parse(sessionStorage.getItem('results')!);
     const item: Product = results.find((x: { asin: string; }) => x.asin === id);
-    console.log(item);
+    // console.log(item);
     return item;
   }
 
