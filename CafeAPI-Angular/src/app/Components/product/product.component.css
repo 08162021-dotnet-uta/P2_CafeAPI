@@ -11,3 +11,12 @@
   display: inline-block;
   margin: 5rem;
 }
+
+.details {
+  display: flex;
+  justify-content: center;
+}
+
+span {
+  font-weight: bold;
+}

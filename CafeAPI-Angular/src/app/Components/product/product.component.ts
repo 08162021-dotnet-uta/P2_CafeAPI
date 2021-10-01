@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
     asin: 'abada', title: "banana", price: { value: 2.99, currency: "USD" }, image: "https://cdn.mos.cms.futurecdn.net/42E9as7NaTaAi4A6JcuFwG-1200-80.jpg"
   }
   productView: ProductView = { id: 'ag', name: 'test', description: '', price: 99.99, inventory: 1 };
-
+  showInventory: boolean = false;
   // This list is the list of products from the DB.
   productsApi: ProductView[] = [];
   //whether or not the product is out of stock
@@ -37,14 +37,12 @@ export class ProductComponent implements OnInit {
 
   ) {
     this.cart = [];
-    this.getProduct()
-    this.postProductToApi();
-    this.getProductFromApi(this.productView.id);
-
   }
 
   ngOnInit(): void {
-    // this.postProductToApi();
+    this.getProduct()
+    this.postProductToApi();
+    this.getProductListing();
   }
 
   // gets a single product from the product list stored in the sessionStorage
@@ -59,14 +57,15 @@ export class ProductComponent implements OnInit {
   getProductListing(): void {
     this.productApiService.ProductList()
       .subscribe(productlisting => {
-        this.productsApi = productlisting
-        // console.log(this.productsApi)
+        this.productsApi = productlisting;
+        console.log(this.productsApi);
       });
   }
 
-  // getProductsApi(): void {
-  //   this.productApiService.ProductList
-  // }
+  checkInventory() {
+    this.getProductFromApi(this.product.asin);
+    this.showInventory = true;
+  }
 
   postProductToApi(): void {
     const p: ProductView = { id: this.product.asin, name: this.product.title, description: '', price: this.product.price.value, inventory: 10 };
