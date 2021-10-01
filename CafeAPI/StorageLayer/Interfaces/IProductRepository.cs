@@ -11,5 +11,6 @@ namespace StorageLayer.Interfaces
     {
         List<ViewModelProduct> Products() { throw new NotImplementedException(); }
         Task<ViewModelProduct> GetProductAsync(string id) { throw new NotImplementedException(); }
+        Task<ViewModelProduct> PostProductAsync(ViewModelProduct vmp) { throw new NotFiniteNumberException(); }
     }
 }

@@ -31,6 +31,12 @@ namespace BusinessLayer.Controllers
             return products;
         }
 
+        /// <summary>
+        /// This method takes a string Id and returns a product with that Id if found,
+        /// otherwise returns Not Found
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("detail/{id}")]
         public async Task<ActionResult<ViewModelProduct>> GetProductById(string id)
         {
@@ -47,18 +53,17 @@ namespace BusinessLayer.Controllers
 
         }
 
+        [HttpPost("register")]
+        public async Task<ActionResult<ViewModelProduct>> Create(ViewModelProduct p)
+        {
+            if (!ModelState.IsValid) return BadRequest();
 
-        //[HttpGet("outOfStock/{id}")]
-        //public async Task<ActionResult<Boolean>> Get(string id)
-        //{
-        //    if (!ModelState.IsValid) return BadRequest();
-        //    Boolean outOfStock = await _productrepo.outOfStockAsync(id);
-        //    if (!outOfStock) _productRepository.reduceStock(id);
-        //    return Ok(outOfStock);
-        //}
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+            ViewModelProduct p1 = await _productrepo.PostProductAsync(p);
+            if (p1 == null)
+            {
+                return NotFound();
+            }
+            return Created($"~product/{p1.Id}", p1);
+        }
     }
 }
