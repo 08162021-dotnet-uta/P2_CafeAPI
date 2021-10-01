@@ -12,6 +12,7 @@ export class ProductService {
   searchTerm!: string;
   private cafeAPIurl : string = "https://p2cafeapi.azurewebsites.net" 
 
+  
   constructor(private http: HttpClient) { }
   //The literal below will replaced by the result of the call to CafeAPI to see is the item is out-of-stock
   //In This is the other input for testing my add-to-cart FE functionality (the other being the "Add to cart" button in app.component)
