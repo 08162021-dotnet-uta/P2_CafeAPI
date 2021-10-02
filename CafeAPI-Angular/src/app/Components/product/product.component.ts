@@ -43,8 +43,6 @@ export class ProductComponent implements OnInit {
     this.getProductListing();
   }
 
-  
-
   ngOnInit(): void {
     
   }
@@ -87,7 +85,7 @@ export class ProductComponent implements OnInit {
     this.location.back();
   }
 
-  setOutOfStockBool(id: string): void{this.productService.outOfStock(id).subscribe(bool => this.outOfStock = bool)}
+  setOutOfStockBool(id: string): void{this.productApiService.outOfStock(id).subscribe(bool => this.outOfStock = bool)}
   addToCart(id: string): void {
 
     this.cartString = sessionStorage.getItem("cart")

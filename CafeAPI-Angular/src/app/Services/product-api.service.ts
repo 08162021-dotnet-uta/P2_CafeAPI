@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Product } from '../Models/product';
 import { ProductView } from '../Models/productView';
+import {CafeAPIUrl} from './URLList'
 
 
 @Injectable({
@@ -11,8 +12,6 @@ import { ProductView } from '../Models/productView';
 })
 export class ProductApiService {
   constructor(private http: HttpClient) { }
-  private url = 'https://localhost:44397';
-  //private url = 'https://p2cafeapi.azurewebsites.net';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -22,23 +21,29 @@ export class ProductApiService {
 
   // create functions to make http requests 
   ProductList(): Observable<ProductView[]> {
-    // return this.http.get<Customer[]>(`${this.url}Customerlist`);
-    return this.http.get<ProductView[]>(`${this.url}/Product/list`);
+    return this.http.get<ProductView[]>(`${CafeAPIUrl}/Product/list`);
   }
 
 
   getProduct(id: string): Observable<ProductView> {
-    return this.http.get<ProductView>(`${this.url}/Product/detail/${id}`);
+    return this.http.get<ProductView>(`${CafeAPIUrl}/Product/detail/${id}`);
   }
 
   addProduct(product: ProductView): Observable<ProductView> {
     console.log("addProduct is working");
     // console.log(product);
-    return this.http.post<ProductView>(`${this.url}/Product/register`, product, this.httpOptions);
+    return this.http.post<ProductView>(`${CafeAPIUrl}/Product/register`, product, this.httpOptions);
     // .pipe(
     //   tap((newproduct: ProductView) => console.log(`Product added with id=${newproduct.id}`)),
     //   catchError(this.handleError<ProductView>('Error on Product'))
     // );
+  }
+
+  //The literal below will replaced by the result of the call to CafeAPI to see is the item is out-of-stock
+  //In This is the other input for testing my add-to-cart FE functionality (the other being the "Add to cart" button in app.component)
+  //Possible input values for testing: true,false
+  outOfStock(productId:string): Observable<boolean>{
+    return this.http.get<boolean>(`${CafeAPIUrl}outOfStock/${productId}`)
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

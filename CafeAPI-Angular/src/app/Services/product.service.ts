@@ -9,18 +9,9 @@ import { Product } from '../Models/product';
 })
 export class ProductService {
   private apiUrl: string = `https://api.rainforestapi.com/request?api_key=4EEDADFC0F7B4CD3B0996DEA09B90586&type=search&amazon_domain=amazon.com&search_term=`;
-  private cafeApiUrl: string = "https://localhost:44397/product/"
   searchTerm!: string;
-  //private cafeApiUrl : string = "https://p2cafeapi.azurewebsites.net" 
-
   
   constructor(private http: HttpClient) { }
-  //The literal below will replaced by the result of the call to CafeAPI to see is the item is out-of-stock
-  //In This is the other input for testing my add-to-cart FE functionality (the other being the "Add to cart" button in app.component)
-  //Possible input values for testing: true,false
-    outOfStock(productId:string): Observable<boolean>{
-    return this.http.get<boolean>(`${this.cafeApiUrl}outOfStock/${productId}`)
-  }
 
   // correctly format the search term to work in API request: 'memory+cards' instead of 'memory cards'
   formatSearchTerm(searchTerm: string): string {
