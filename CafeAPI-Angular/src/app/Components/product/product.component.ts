@@ -22,8 +22,6 @@ export class ProductComponent implements OnInit {
   showInventory: boolean = false;
   // This list is the list of products from the DB.
   productsApi: ProductView[] = [];
-  //whether or not the product is out of stock
-  outOfStock ?: boolean 
   //users cart, stored in sessionStorage
   cart: Product[]
   //used to parse cart
@@ -39,8 +37,7 @@ export class ProductComponent implements OnInit {
     this.cart = []; 
     this.getProduct(); 
     this.postProductToApi();
-    //this.setOutOfStockBool(this.product.asin)
-    this.getProductListing();
+    //this.getProductListing();
   }
 
   ngOnInit(): void {
@@ -56,13 +53,13 @@ export class ProductComponent implements OnInit {
   }
 
   // this function returns the list of products from the DB
-  getProductListing(): void {
-    this.productApiService.ProductList()
-      .subscribe(productlisting => {
-        this.productsApi = productlisting;
-        console.log(this.productsApi);
-      });
-  }
+  // getProductListing(): void {
+  //   this.productApiService.ProductList()
+  //     .subscribe(productlisting => {
+  //       this.productsApi = productlisting;
+  //       console.log(this.productsApi);
+  //     });
+  // }
 
   checkInventory() {
     this.getProductFromApi(this.product.asin);
@@ -84,8 +81,7 @@ export class ProductComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
-  setOutOfStockBool(id: string): void{this.productApiService.outOfStock(id).subscribe(bool => this.outOfStock = bool)}
+  
   addToCart(id: string): void {
 
     this.cartString = sessionStorage.getItem("cart")
@@ -95,6 +91,8 @@ export class ProductComponent implements OnInit {
     else sessionStorage.setItem("cart", JSON.stringify(this.cart))
 
     this.setOutOfStockBool(id);
-    if (!this.outOfStock) { this.cart.push(this.product); sessionStorage.setItem("cart", JSON.stringify(this.cart)) }
   }
+  
+  setOutOfStockBool(id: string): void{this.productApiService.outOfStock(id).then(outOfStock => 
+    {if (!outOfStock) { console.log("item added to cart");this.cart.push(this.product); sessionStorage.setItem("cart", JSON.stringify(this.cart)) }})}
 }

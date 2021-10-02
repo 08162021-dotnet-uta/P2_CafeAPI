@@ -6,7 +6,6 @@ import { Product } from '../Models/product';
 import { ProductView } from '../Models/productView';
 import {CafeAPIUrl} from './URLList'
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +23,6 @@ export class ProductApiService {
     return this.http.get<ProductView[]>(`${CafeAPIUrl}/Product/list`);
   }
 
-
   getProduct(id: string): Observable<ProductView> {
     return this.http.get<ProductView>(`${CafeAPIUrl}/Product/detail/${id}`);
   }
@@ -39,11 +37,8 @@ export class ProductApiService {
     // );
   }
 
-  //The literal below will replaced by the result of the call to CafeAPI to see is the item is out-of-stock
-  //In This is the other input for testing my add-to-cart FE functionality (the other being the "Add to cart" button in app.component)
-  //Possible input values for testing: true,false
-  outOfStock(productId:string): Observable<boolean>{
-    return this.http.get<boolean>(`${CafeAPIUrl}outOfStock/${productId}`)
+   outOfStock(productId:string): Promise<boolean>{
+   return this.http.get<boolean>(`${CafeAPIUrl}/Product/outOfStock/${productId}`).toPromise()
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
