@@ -39,7 +39,6 @@
   <ItemGroup>
     <ProjectReference Include="..\StorageLayer\StorageLayer.csproj" />
     <ProjectReference Include="..\ModelsLayer\ModelsLayer.csproj" />
-    <ProjectReference Include="..\DatabaseLayer\DatabaseLayer.csproj" />
   </ItemGroup>
 
 </Project>

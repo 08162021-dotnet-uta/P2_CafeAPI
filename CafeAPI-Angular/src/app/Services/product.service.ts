@@ -11,7 +11,7 @@ export class ProductService {
   private apiUrl: string = `https://api.rainforestapi.com/request?api_key=4EEDADFC0F7B4CD3B0996DEA09B90586&type=search&amazon_domain=amazon.com&search_term=`;
   private cafeApiUrl: string = "https://localhost:44397/product/"
   searchTerm!: string;
-  private cafeAPIurl : string = "https://p2cafeapi.azurewebsites.net" 
+  //private cafeApiUrl : string = "https://p2cafeapi.azurewebsites.net" 
 
   
   constructor(private http: HttpClient) { }

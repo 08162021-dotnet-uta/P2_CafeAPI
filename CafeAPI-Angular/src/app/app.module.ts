@@ -35,7 +35,7 @@ import { ProductApiService } from './Services/product-api.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

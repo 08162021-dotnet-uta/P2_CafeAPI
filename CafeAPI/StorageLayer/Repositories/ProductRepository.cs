@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StorageLayer
+namespace StorageLayer.Repositories
 {
     public class ProductRepository : IProductRepository
     {
         // Step 1 of Dependency Injection - create a  private instance of the dependency
-        private readonly testprojectContext _context;
+        private readonly CafeContext _context;
         // Step 2 of DI - call for an instance from the DI system in the constructor.
-        public ProductRepository(testprojectContext context)
+        public ProductRepository(CafeContext context)
         {
             _context = context;
         }

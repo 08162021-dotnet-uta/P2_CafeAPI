@@ -7,13 +7,13 @@ using ModelsLayer.EfModels;
 
 namespace DatabaseLayer
 {
-    public partial class testprojectContext : DbContext
+    public partial class CafeContext : DbContext
     {
-        public testprojectContext()
+        public CafeContext()
         {
         }
 
-        public testprojectContext(DbContextOptions<testprojectContext> options)
+        public CafeContext(DbContextOptions<CafeContext> options)
             : base(options)
         {
         }

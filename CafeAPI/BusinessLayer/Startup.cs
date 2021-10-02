@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StorageLayer.Interfaces;
+using StorageLayer.Repositories;
 using StorageLayer;
 using ModelsLayer.EfModels;
 using BusinessLayer.Controllers;
@@ -57,7 +58,7 @@ namespace BusinessLayer
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BusinessLayer", Version = "v1" });
             });
-            services.AddDbContext<testprojectContext>(options =>
+            services.AddDbContext<CafeContext>(options =>
             {
                 //if (options.IsConfigured)
                 //{

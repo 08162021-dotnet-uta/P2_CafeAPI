@@ -12,6 +12,7 @@ import { ProductView } from '../Models/productView';
 export class ProductApiService {
   constructor(private http: HttpClient) { }
   private url = 'https://localhost:44397';
+  //private url = 'https://p2cafeapi.azurewebsites.net';
 
   httpOptions = {
     headers: new HttpHeaders({

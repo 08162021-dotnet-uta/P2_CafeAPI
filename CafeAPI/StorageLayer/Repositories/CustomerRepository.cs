@@ -9,15 +9,15 @@ using ModelsLayer.EfModels;
 using DatabaseLayer;
 
 
-namespace StorageLayer
+namespace StorageLayer.Repositories
 {
 	public class CustomerRepository : ICustomerRepository
 	{
 		// Step1 of DI - create  privatre instance of the dependency
-		private readonly testprojectContext _context;
+		private readonly CafeContext _context;
 
 		// step 2 of DI - call for an in stance from the DI system in your constructor.
-		public CustomerRepository(testprojectContext context)
+		public CustomerRepository(CafeContext context)
 		{
 			_context = context;
 		}
