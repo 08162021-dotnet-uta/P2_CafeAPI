@@ -11,11 +11,13 @@ C# Programming, HTML5, CSS3, TypeScript, ADO.NET Entity Framework, Testing Proce
 - Display their cart
 - Customer can create account
 - Customer can sign into their account
-### To do list
-- Removing an item from the cart*
-- Placing orders*
-- Viewing past orders*
-*In progress
+### In progress
+- Removing an item from the cart
+- Placing orders
+- Viewing past orders
+### Todo list
+## Getting started
+## Usage
 ## Contributors
 - Kyle Hill (team leader)
 - Gulomjon Saidov
