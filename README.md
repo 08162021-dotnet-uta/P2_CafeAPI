@@ -36,3 +36,5 @@ This link, https://cafeapi-angular.azurewebsites.net/, will take you to our Web 
 - Gulomjon Saidov
 - Joshua Posada
 - Christie Thammavong
+## License
+This project uses the following license: [MIT License](https://github.com/08162021-dotnet-uta/P2_CafeAPI/blob/main/LICENSE).
