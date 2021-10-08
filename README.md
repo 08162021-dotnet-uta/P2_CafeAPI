@@ -21,6 +21,7 @@ C# Programming, HTML5, CSS3, TypeScript, ADO.NET Entity Framework, Testing Proce
 - Administrator to monitor customer-generated content 
 - Incentivize users to write professional descriptions by giving them vouchers to use on our site
 ## Getting started
+This link, https://cafeapi-angular.azurewebsites.net/, will take you to our Web Store Application. The page should look like below:
 ## Usage
 ## Contributors
 - Kyle Hill (team leader)
