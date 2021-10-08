@@ -22,7 +22,15 @@ C# Programming, HTML5, CSS3, TypeScript, ADO.NET Entity Framework, Testing Proce
 - Incentivize users to write professional descriptions by giving them vouchers to use on our site
 ## Getting started
 This link, https://cafeapi-angular.azurewebsites.net/, will take you to our Web Store Application. The page should look like below:
+<p align="center">
+  <img src="LandingPage.JPG" alt="Landing page of Web Store Application" width="75%"/>
+</p>
+
 ## Usage
+- The button in the top-left corner will toggle the navigation bar
+  - You can Login or Register
+- You can search for an item, click on an item, and add that item to your cart
+- You can click the Cart icon in the top-right corner to display the current status of your cart
 ## Contributors
 - Kyle Hill (team leader)
 - Gulomjon Saidov
