@@ -4,13 +4,14 @@ This is a ASP.NET Core API project utilizing Entity Framework Core, an Azure SQL
 ## Technologies Used
 C# Programming, HTML5, CSS3, TypeScript, ADO.NET Entity Framework, Testing Process/SDLC, Microsoft SQL Server, Azure DevOps Pipelines, Azure Cloud Database, Trello
 ## Features
+### Completed
 - Search for items
 - View an item’s details
 - Add an item to their cart
 - Display their cart
 - Customer can create account
 - Customer can sign into their account
-To do list:
+### To do list
 - Removing an item from the cart*
 - Placing orders*
 - Viewing past orders*
