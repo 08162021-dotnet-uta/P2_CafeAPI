@@ -16,8 +16,8 @@ C# Programming, HTML5, CSS3, TypeScript, ADO.NET Entity Framework, Testing Proce
 - Placing orders
 - Viewing past orders
 ### Todo list
-- Customer leave product review and rating 
-- Customer ubmit product subscriptions (needed because not using API call which provides product description, call takes too long) 
+- Customer can leave product reviews and ratings 
+- Customer can submit product subscriptions (needed because not using API call which provides product description, call takes too long) 
 - Administrator to monitor customer-generated content 
 - Incentivize users to write professional descriptions by giving them vouchers to use on our site
 ## Getting started
