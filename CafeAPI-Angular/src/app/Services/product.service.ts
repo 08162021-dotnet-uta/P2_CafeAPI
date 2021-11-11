@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Product } from '../Models/product';
+import {RESULTS} from '../mock-search-results';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ProductService {
     this.searchTerm = searchTerm.replace(" ", "+");
     return this.searchTerm;
   }
-
+/*
   // returns a list of products from API based on user's search term
   getProductListing(searchTerm: string): Observable<Product[]> {
     // what the API request string should look like: `search_term=memory+cards&page=1`;
@@ -28,6 +29,9 @@ export class ProductService {
       .pipe(map((data: any) => data.search_results.filter((item: Product) => item.price !== undefined)),
         catchError(this.handleError<Product[]>('getProductListing', []))
       );
+  }*/
+  getProductListing(searchTerm: string): Observable<Product[]> {
+    return of(RESULTS);
   }
 
   // returns a single product when the use click on a product 

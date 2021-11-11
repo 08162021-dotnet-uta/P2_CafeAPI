@@ -69,7 +69,7 @@ namespace BusinessLayer
 
                 if (!options.IsConfigured)
                 {
-                    options.UseSqlServer(Configuration.GetConnectionString("AzureDb"));
+                    options.UseSqlServer(Configuration.GetConnectionString("Default"));
                 }
             });
 
