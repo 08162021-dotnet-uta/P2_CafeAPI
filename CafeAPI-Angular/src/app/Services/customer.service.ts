@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Customer } from '../Models/customer';
+import { Customer } from '../Models/inventory';
 import { CafeAPIUrl } from './URLList';
 
 import { catchError, map, tap } from 'rxjs/operators';

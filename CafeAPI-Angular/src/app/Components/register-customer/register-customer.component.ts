@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Customer } from '../../Models/customer';
+import { Customer } from '../../Models/inventory';
 import { CustomerService } from 'src/app/Services/customer.service';
 // import { InMemoryDataService } from '../in-memory-data.service';
 

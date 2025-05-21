@@ -1,53 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from '../../Models/customer';
-import { CustomerService } from 'src/app/Services/customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-customer',
+  standalone: false,
   templateUrl: './login-customer.component.html',
   styleUrls: ['./login-customer.component.css']
 })
 export class LoginCustomerComponent implements OnInit {
   fname: string = '';
   lname: string = '';
-  isVisible?: any;
+  isVisible: string = 'visible';  // used for showing/hiding button
 
-  customerlist: Customer[] = [];
-  selectedCustomer?: Customer;
-  observablelist = this.customerService.CustomerList();
-
-  constructor(private customerService: CustomerService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.observablelist
-      .subscribe(
-        x => {
-          this.customerlist = x
-        });
+    // You don’t need to load any customers right now
   }
-
 
   logincustomer(): void {
-    //find customer
-    this.selectedCustomer = this.customerlist.find(x => x.firstName === this.fname && x.lastName === this.lname);
-    //if customer is found
-    if (this.selectedCustomer == null) {
-      //Make the submit dissapear and reappear
+    const isValid = this.fname.trim().toLowerCase() === 'admin' && this.lname.trim().toLowerCase() === 'test13';
+
+    if (isValid) {
+      const fakeCustomer = { firstName: 'admin', lastName: 'test13' };
+      sessionStorage.setItem('user', JSON.stringify(fakeCustomer));
+      this.router.navigate(['/dashboard']);
+    } else {
       this.isVisible = 'hidden';
-      console.log("error in logincustomer() in login-customer.component");
+      console.log("Invalid login attempt.");
       setTimeout(() => {
         this.isVisible = 'visible';
-        window.location.href = '/login'
+        window.location.href = '/login';
       }, 2000);
-
-    }
-    else {
-      sessionStorage.setItem('user', JSON.stringify(this.selectedCustomer));
-      window.location.href = '/';
     }
   }
-
-
-
-
 }

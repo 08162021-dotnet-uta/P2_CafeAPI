@@ -1,41 +1,34 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from 'src/app/Components/app/app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { MenuSideBarComponent } from './Components/menu-side-bar/menu-side-bar.component';
 import { LoginCustomerComponent } from './Components/login-customer/login-customer.component';
-import { RegisterCustomerComponent } from './Components/register-customer/register-customer.component';
-import { ReactiveFormsModule } from '@angular/forms';
-// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { InMemoryDataService } from './in-memory-data.service';
-import { ProductComponent } from './Components/product/product.component';
-import { SearchBarComponent } from './Components/search-bar/search-bar.component';
-import { ProductListingComponent } from './Components/product-listing/product-listing.component';
-import { ViewCartComponent } from './Components/view-cart/view-cart.component';
-import { ProductApiService } from './Services/product-api.service';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CountUpDirective } from './shared/directives/count-up.directive';
+import { GlassForgeComponent } from './glass-forge/glass-forge.component'; // ✅ Add this
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuSideBarComponent,
     LoginCustomerComponent,
-    RegisterCustomerComponent,
-    ProductComponent,
-    SearchBarComponent,
-    ProductListingComponent,
-    ViewCartComponent
+    HomeComponent,
+    CountUpDirective
   ],
   imports: [
+    NgChartsModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
-    HttpClientModule
+    RouterModule
   ],
-  providers: [ ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

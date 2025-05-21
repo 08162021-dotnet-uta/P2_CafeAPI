@@ -1,10 +1,16 @@
-export interface Product {
-  asin: string;
-  // id: string; // asin
-  title: string; // name of product
-  price: {
-    value: number; // price of product not including '$'
-    currency: string; // USD
-  }
-  image: string; // image link
+export type ComponentType = 'frame' | 'glass' | 'handle' | 'lock';
+
+export interface ProductPart {
+  type: ComponentType;
+  quantity: number;
+  width?: number;
+  height?: number;
+  length?: number;
+}
+
+export interface ProductBlueprint {
+  name: string;
+  image: string;
+  salePrice: number;
+  requiredParts: ProductPart[];
 }
